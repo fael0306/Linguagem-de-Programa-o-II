@@ -3,84 +3,137 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+        try {
+            Scanner entrada = new Scanner(System.in);
+            System.out.println("Digite a quantidade de funcionários que deseja cadastrar: ");
+            int qtd = Integer.parseInt(entrada.nextLine());
 
-		String ce;
-		String nomeemp;
-		String codigo;
-		float salario;
-		int dep;
-		int qtd;
-		float grat;
+            ArrayList<Funcionario> funcList = new ArrayList<>();
 
-		try {
-			Scanner entrada = new Scanner(System.in);
-			System.out.println("Digite a quantidade de funcion�rios que deseja cadastrar: ");
-			qtd = Integer.parseInt(entrada.nextLine());
-			ArrayList funcList = new ArrayList(qtd);
-			for (int i = 0; i < qtd; i++) {
+            for (int i = 0; i < qtd; i++) {
+                Scanner entrada2 = new Scanner(System.in);
+                System.out.println("Contratado ou Executivo (c ou e)? ");
+                String ce = entrada2.nextLine().toLowerCase();
 
-				Scanner entrada2 = new Scanner(System.in);
-				System.out.println("Contratado ou Executivo (c ou e)? ");
-				ce = entrada2.nextLine();
+                while (!ce.equals("c") && !ce.equals("e")) {
+                    System.out.println("Contratado ou Executivo (c ou e)?\nDigite c ou e.\n");
+                    ce = entrada2.nextLine().toLowerCase();
+                }
 
-				while (ce.equals("e")==false && ce.equals("c")==false) {
-					System.out.println("Contratado ou Executivo (c ou e)?\nDigite c ou e.\n");
-					ce = entrada2.nextLine();
-				}
-				if (ce.equals("c") || ce.equals("C")) {
-					Scanner nomeemp2 = new Scanner(System.in);
-					System.out.println("\nNome do empregado: ");
-					nomeemp = nomeemp2.nextLine();
+                Funcionario funcionario;
+                if (ce.equals("c")) {
+                    funcionario = cadastrarContratado();
+                } else {
+                    funcionario = cadastrarExecutivo();
+                }
 
-					Scanner codigo2 = new Scanner(System.in);
-					System.out.println("\nC�digo: ");
-					codigo = codigo2.nextLine();
+                funcList.add(funcionario);
+            }
 
-					Scanner salario2 = new Scanner(System.in);
-					System.out.println("\nSal�rio: ");
-					salario = Float.parseFloat(salario2.nextLine());
+            for (Funcionario funcionario : funcList) {
+                System.out.println(funcionario.toString());
+            }
 
-					Scanner dep2 = new Scanner(System.in);
-					System.out.println("\nN�mero de dependentes: ");
-					dep = Integer.parseInt(dep2.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada inválida. Você precisa digitar um número.");
+        }
+    }
 
-					FuncCntrd funccntrd = new FuncCntrd(nomeemp, codigo, salario, dep);
-					funcList.add(i,funccntrd);
-				}
-				if (ce.equals("e") || ce.equals("E")) {
-					Scanner nomeemp2 = new Scanner(System.in);
-					System.out.println("\nNome do empregado: ");
-					nomeemp = nomeemp2.nextLine();
+    public static FuncCntrd cadastrarContratado() {
+        Scanner nomeemp2 = new Scanner(System.in);
+        System.out.println("\nNome do empregado: ");
+        String nomeemp = nomeemp2.nextLine();
 
-					Scanner codigo2 = new Scanner(System.in);
-					System.out.println("C�digo: ");
-					codigo = codigo2.nextLine();
+        Scanner codigo2 = new Scanner(System.in);
+        System.out.println("\nCódigo: ");
+        String codigo = codigo2.nextLine();
 
-					Scanner salario2 = new Scanner(System.in);
-					System.out.println("Sal�rio: ");
-					salario = Float.parseFloat(salario2.nextLine());
+        Scanner salario2 = new Scanner(System.in);
+        System.out.println("\nSalário: ");
+        float salario = Float.parseFloat(salario2.nextLine());
 
-					Scanner grat2 = new Scanner(System.in);
-					System.out.println("Gratifica��o: ");
-					grat = Float.parseFloat(grat2.nextLine());
+        Scanner dep2 = new Scanner(System.in);
+        System.out.println("\nNúmero de dependentes: ");
+        int dep = Integer.parseInt(dep2.nextLine());
 
-					Scanner dep2 = new Scanner(System.in);
-					System.out.println("N�mero de dependentes: ");
-					dep = Integer.parseInt(dep2.nextLine());
+        return new FuncCntrd(nomeemp, codigo, salario, dep);
+    }
 
-					FuncExct funcexct = new FuncExct(nomeemp, codigo, salario, dep, grat);
-					funcList.add(i,funcexct);
-				}
+    public static FuncExct cadastrarExecutivo() {
+        Scanner nomeemp2 = new Scanner(System.in);
+        System.out.println("\nNome do empregado: ");
+        String nomeemp = nomeemp2.nextLine();
 
-			}
+        Scanner codigo2 = new Scanner(System.in);
+        System.out.println("Código: ");
+        String codigo = codigo2.nextLine();
 
-			for (int contador = 0; contador < qtd; contador++) {
-				System.out.println(funcList.get(contador).toString());
-			}
+        Scanner salario2 = new Scanner(System.in);
+        System.out.println("Salário: ");
+        float salario = Float.parseFloat(salario2.nextLine());
 
-		} catch (NumberFormatException e) {
-			System.out.println("Entrada inv�lida. Voc� precisa digitar um n�mero.");
-		}
-	}
+        Scanner grat2 = new Scanner(System.in);
+        System.out.println("Gratificação: ");
+        float grat = Float.parseFloat(grat2.nextLine());
+
+        Scanner dep2 = new Scanner(System.in);
+        System.out.println("Número de dependentes: ");
+        int dep = Integer.parseInt(dep2.nextLine());
+
+        return new FuncExct(nomeemp, codigo, salario, dep, grat);
+    }
+}
+
+class Funcionario {
+    protected String nome;
+    protected String codigo;
+    protected float salario;
+    protected int numDependentes;
+
+    public Funcionario(String nome, String codigo, float salario, int numDependentes) {
+        this.nome = nome;
+        this.codigo = codigo;
+        this.salario = salario;
+        this.numDependentes = numDependentes;
+    }
+
+    public float calcularSalario() {
+        // Implementar o cálculo do salário
+        return salario;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + "\nCódigo: " + codigo + "\nSalário: " + salario + "\nDependentes: " + numDependentes;
+    }
+}
+
+class FuncCntrd extends Funcionario {
+    public FuncCntrd(String nome, String codigo, float salario, int numDependentes) {
+        super(nome, codigo, salario, numDependentes);
+    }
+
+    // Se houver diferenças específicas para o cálculo de salário, implemente aqui
+}
+
+class FuncExct extends Funcionario {
+    private float gratificacao;
+
+    public FuncExct(String nome, String codigo, float salario, int numDependentes, float gratificacao) {
+        super(nome, codigo, salario, numDependentes);
+        this.gratificacao = gratificacao;
+    }
+
+    // Se houver diferenças específicas para o cálculo de salário, implemente aqui
+
+    @Override
+    public float calcularSalario() {
+        return super.calcularSalario() + gratificacao;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nGratificação: " + gratificacao;
+    }
 }

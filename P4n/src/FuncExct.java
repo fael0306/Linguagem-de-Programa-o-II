@@ -1,25 +1,27 @@
-
 public class FuncExct extends FuncCntrd {
+    private float grat;
 
-	private float grat;
+    public FuncExct(String nome, String cdemp, float salario, int dependentes, float grat) {
+        super(nome, cdemp, salario, dependentes);
+        this.grat = grat;
+    }
 
-	public FuncExct(String nome, String cdemp, float salario, int dependentes, float grat) {
-		super(nome, cdemp, salario, dependentes);
+    public float getGrat() {
+        return grat;
+    }
 
-		// TODO Auto-generated constructor stub
-	}
+    public void setGrat(float grat) {
+        this.grat = grat;
+    }
 
-	public float calculaSalario() {
+    public float calculaSalario(float aliquotaIR) {
+        float salarioliq = super.calculaSalario(aliquotaIR) + grat;
+        return salarioliq;
+    }
 
-		float salarioliq;
-
-		salarioliq = super.calculaSalario(aliquotaIR) + grat;
-
-		return salarioliq;
-	}
-
-	public String toString() {
-		return String.format("Nome: %s\nCÛdigo: %s*\nSal·rio-base: %s\nSal·rio-lÌquido: %s\nGratificaÁ„o: %s", super.getNome(),
-				super.getCdemp(), calculaSalario(), grat);
-	}
+    @Override
+    public String toString() {
+        return String.format("Nome: %s\nC√≥digo: %s\nSal√°rio-base: %.2f\nSal√°rio-l√≠quido: %.2f\nGratifica√ß√£o: %.2f",
+                getNome(), getCdemp(), getSalario(), calculaSalario(aliquotaIR), grat);
+    }
 }

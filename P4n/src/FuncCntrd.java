@@ -1,70 +1,59 @@
 public class FuncCntrd extends Funcionario {
+    private int dependentes;
+    private float salariofamilia;
+    private float valorPorDep = 9.58F;
+    public float aliquotaIR = 0.15F;
 
-	private int dependentes;
-	private float salariofamilia;
-	private float valorPorDep = 9.58F;
-	public float aliquotaIR = 0.15F;
+    public FuncCntrd(String nome, String cdemp, float salario, int dependentes) {
+        super(nome, cdemp, salario);
+        this.dependentes = dependentes;
+        calcularSalario();
+    }
 
-	public FuncCntrd(String nome, String cdemp, float salario, int dependentes) {
-		super(nome, cdemp, salario);
-	}
+    public float calculaSalario() {
+        salariofamilia = dependentes * valorPorDep;
+        float salariobase = super.getSalario() + salariofamilia;
+        float salarioliq = salariobase * (1 - aliquotaIR);
+        return salarioliq;
+    }
 
-	public float calculaSalario() {
+    public int getDependentes() {
+        return dependentes;
+    }
 
-		float salarioliq;
+    public void setDependentes(int dependentes) {
+        this.dependentes = dependentes;
+        calcularSalario(); // Recalcula o salário líquido quando o número de dependentes é modificado
+    }
 
-		salarioliq = super.calculaSalario(aliquotaIR);
+    public float getSalariofamilia() {
+        return salariofamilia;
+    }
 
-		return salarioliq;
-	}
+    public void setSalariofamilia(float salariofamilia) {
+        this.salariofamilia = salariofamilia;
+    }
 
-	public float calculaSalario(int dependentes) {
+    public float getValorPorDep() {
+        return valorPorDep;
+    }
 
-		float salariobase, salariofamilia = dependentes * valorPorDep;
+    public void setValorPorDep(float valorPorDep) {
+        this.valorPorDep = valorPorDep;
+        calcularSalario(); // Recalcula o salário líquido quando o valor do salário família é modificado
+    }
 
-		salariobase = salario + salariofamilia;
+    public float getAliquotaIR() {
+        return aliquotaIR;
+    }
 
-		calculaSalario();
+    public void setAliquotaIR(float aliquotaIR) {
+        this.aliquotaIR = aliquotaIR;
+        calcularSalario(); // Recalcula o salário líquido quando a alíquota de IR é modificado
+    }
 
-		return salariobase;
-
-	}
-
-	public int getDependentes() {
-		return dependentes;
-	}
-
-	public void setDependentes(int dependentes) {
-		this.dependentes = dependentes;
-	}
-
-	public float getSalariofamilia() {
-		return salariofamilia;
-	}
-
-	public void setSalariofamilia(float salariofamilia) {
-		this.salariofamilia = salariofamilia;
-	}
-
-	public float getValorPorDep() {
-		return valorPorDep;
-	}
-
-	public void setValorPorDep(float valorPorDep) {
-		this.valorPorDep = valorPorDep;
-	}
-
-	public float getAliquotaIR() {
-		return aliquotaIR;
-	}
-
-	public void setAliquotaIR(float aliquotaIR) {
-		this.aliquotaIR = aliquotaIR;
-	}
-
-	public String toString() {
-		return String.format("Nome: %s\nC�digo: %s\nSal�rio-base: %s\nSal�rio-l�quido: %s\n", super.getNome(), super.getCdemp(),
-				calculaSalario(dependentes), calculaSalario());
-	}
-
+    @Override
+    public String toString() {
+        return String.format("Nome: %s\nCódigo: %s\nSalário-base: %.2f\nSalário-líquido: %.2f\n", getNome(), getCdemp(), calculaSalario(), getSalario());
+    }
 }
