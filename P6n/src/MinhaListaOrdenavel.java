@@ -1,123 +1,85 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class MinhaListaOrdenavel {
 
-	final int a = 1;
-	final int b = 2;
-	final int x = 3;
-	final int d = 4;
-	final int e = 5;
+    private final List<PessoaIMC> listaPessoa = new ArrayList<>();
 
-	private ArrayList<PessoaIMC> listapessoa = new ArrayList<PessoaIMC>();
+    public void add(PessoaIMC pessoa) {
+        listaPessoa.add(pessoa);
+    }
 
-	public void add(PessoaIMC p) {
-		listapessoa.add(p);
-	}
+    public PessoaIMC get(int index) {
+        return listaPessoa.get(index);
+    }
 
-	public PessoaIMC get(int index) {
-		return listapessoa.get(index);
-	}
+    private int compareByNome(PessoaIMC pessoa1, PessoaIMC pessoa2) {
+        return pessoa1.getNome().compareTo(pessoa2.getNome());
+    }
 
-	public int orderbynomeaux(PessoaIMC pessoa1, PessoaIMC pessoa2) {
-		return pessoa1.getNome().compareTo(pessoa2.getNome());
-	}
+    private int compareByPeso(PessoaIMC pessoa1, PessoaIMC pessoa2) {
+        return Double.compare(pessoa1.getPeso(), pessoa2.getPeso());
+    }
 
-	public void orderbynomeAZ() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (orderbynomeaux(listapessoa.get(i), listapessoa.get(j)) > 0) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    private int compareByAltura(PessoaIMC pessoa1, PessoaIMC pessoa2) {
+        return Double.compare(pessoa1.getAltura(), pessoa2.getAltura());
+    }
 
-	public void orderbynomeZA() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (orderbynomeaux(listapessoa.get(i), listapessoa.get(j)) < 0) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    private int compareByIMC(PessoaIMC pessoa1, PessoaIMC pessoa2) {
+        return Double.compare(pessoa1.calculaIMC(), pessoa2.calculaIMC());
+    }
 
-	public void orderbypesocrescente() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (listapessoa.get(i).getPeso() > listapessoa.get(j).getPeso()) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    private void sortListByComparator(Comparator<PessoaIMC> comparator) {
+        Collections.sort(listaPessoa, comparator);
+    }
 
-	public void orderbypesodecrescente() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (listapessoa.get(i).getPeso() < listapessoa.get(j).getPeso()) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    public void orderByNomeAZ() {
+        sortListByComparator(this::compareByNome);
+    }
 
-	public void orderbyaltura() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (listapessoa.get(i).getAltura() < listapessoa.get(j).getAltura()) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    public void orderByNomeZA() {
+        sortListByComparator(Collections.reverseOrder(this::compareByNome));
+    }
 
-	public void orderbyIMC() {
-		PessoaIMC aux;
-		for (int i = 0; i <= listapessoa.size(); i++) {
-			for (int j = i + 1; j < listapessoa.size(); j++) {
-				if (listapessoa.get(i).calculaIMC(listapessoa.get(i).getPeso(),
-						listapessoa.get(i).getAltura()) > listapessoa.get(j).calculaIMC(listapessoa.get(j).getPeso(),
-								listapessoa.get(j).getAltura())) {
-					aux = listapessoa.get(i);
-					listapessoa.set(i, listapessoa.get(j));
-					listapessoa.set(j, aux);
-				}
-			}
-		}
-	}
+    public void orderByPesoCrescente() {
+        sortListByComparator(this::compareByPeso);
+    }
 
-	public ArrayList<PessoaIMC> ordena(final int c) {
+    public void orderByPesoDecrescente() {
+        sortListByComparator(Collections.reverseOrder(this::compareByPeso));
+    }
 
-		if (c == a) {
-			this.orderbynomeAZ();
-		} else if (c == b) {
-			this.orderbynomeZA();
-		} else if (c == x) {
-			this.orderbypesocrescente();
-		} else if (c == d) {
-			this.orderbyaltura();
-		} else if (c == e) {
-			this.orderbyIMC();
-		} else {
-			System.out.println("Você digitou um número inválido. Programa encerrado.");
-			System.exit(0);
-		}
-		return listapessoa;
-	}
+    public void orderByAltura() {
+        sortListByComparator(this::compareByAltura);
+    }
+
+    public void orderByIMC() {
+        sortListByComparator(this::compareByIMC);
+    }
+
+    public ArrayList<PessoaIMC> ordena(int opcao) {
+        switch (opcao) {
+            case 1:
+                orderByNomeAZ();
+                break;
+            case 2:
+                orderByNomeZA();
+                break;
+            case 3:
+                orderByPesoCrescente();
+                break;
+            case 4:
+                orderByAltura();
+                break;
+            case 5:
+                orderByIMC();
+                break;
+            default:
+                System.out.println("OpÃ§Ã£o invÃ¡lida. Programa encerrado.");
+                System.exit(0);
+        }
+        return new ArrayList<>(listaPessoa);
+    }
 }
