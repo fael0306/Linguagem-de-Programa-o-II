@@ -1,28 +1,26 @@
 public class Homem extends PessoaIMC {
 
-    public String resultIMC() {
-        double imc = calculaIMC(super.getPeso(), super.getAltura());
+	public String resultIMC() {
 
-        final double IMC_ABAIXO_PESO_IDEAL = 20.7;
-        final double IMC_PESO_IDEAL_MIN = 20.7;
-        final double IMC_PESO_IDEAL_MAX = 26.4;
+		// IMC < 20.7 : Abaixo do peso ideal
+		// 20.7 ≤ IMC ≤ 26.4: Peso ideal
+		// IMC > 26.4 : Acima do peso ideal
 
-        if (imc < IMC_ABAIXO_PESO_IDEAL) {
-            return String.format("IMC: %.2f\nAbaixo do peso ideal.", imc);
-        } else if (imc >= IMC_PESO_IDEAL_MIN && imc <= IMC_PESO_IDEAL_MAX) {
-            return String.format("IMC: %.2f\nPeso ideal.", imc);
-        } else {
-            return String.format("IMC: %.2f\nAcima do peso ideal.", imc);
-        }
-    }
+		double imc;
 
-    public Homem(String nome, String datanascimento, double peso, double altura) {
-        super(nome, datanascimento, peso, altura);
-    }
+		imc = calculaIMC(super.getPeso(), super.getAltura());
 
-    @Override
-    public String toString() {
-        return String.format("Nome: %s\nData de nascimento: %s\nPeso: %.2f kg\nAltura: %.2f m",
-                super.getNome(), super.getDataNascimento(), super.getPeso(), super.getAltura());
-    }
+		if (imc < 20.7) {
+			return String.format("IMC: %.2f\nAbaixo do peso ideal.", imc);
+		} else if (imc >= 20.7 && imc <= 26.4) {
+			return String.format("IMC: %.2f\nPeso ideal.", imc);
+		} else {
+			return String.format("IMC: %.2f\nAcima do peso ideal.", imc);
+		}
+	}
+
+	public Homem(String nome, String datanascimento, double peso, double altura) {
+		super(nome, datanascimento, peso, altura);
+		// TODO Auto-generated constructor stub
+	}
 }

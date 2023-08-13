@@ -1,55 +1,54 @@
 public class Funcionario {
-    private String nome;
-    private String cdemp;
-    private float salario;
-    private float salarioliq;
 
-    public Funcionario(String nome, String cdemp, float salario) {
-        this.nome = nome;
-        this.cdemp = cdemp;
-        this.salario = salario;
-        calcularSalarioLiquido(0); // Assumindo desconto inicial de 0%
-    }
+	public String nome, cdemp;
+	public float salario;
+	public float salarioliq;
 
-    public float getSalario() {
-        return salario;
-    }
+	public Funcionario(String nome, String cdemp, float salario) {
+		float salarioliq = salario;
+	}
 
-    public void setSalario(float salario) {
-        this.salario = salario;
-        calcularSalarioLiquido(0); // Recalcula o salário líquido ao modificar o salário base
-    }
+	public float calculaSalario(float desconto) {
 
-    public String getCdemp() {
-        return cdemp;
-    }
+		salarioliq = salario * (1 - (desconto / 100));
 
-    public void setCdemp(String cdemp) {
-        this.cdemp = cdemp;
-    }
+		return salarioliq;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	//public String toString() {
+	//	return String.format("Nome: %s\nC�digo: %s\nSal�rio-base: %s", cdemp, salario);
+	//}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getCdemp() {
+		return cdemp;
+	}
 
-    public float getSalarioliq() {
-        return salarioliq;
-    }
+	public void setCdemp(String cdemp) {
+		this.cdemp = cdemp;
+	}
 
-    private void calcularSalarioLiquido(float desconto) {
-        salarioliq = salario * (1 - (desconto / 100));
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void aplicarDesconto(float desconto) {
-        calcularSalarioLiquido(desconto);
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    @Override
-    public String toString() {
-        return String.format("Nome: %s\nCódigo: %s\nSalário-base: %.2f\nSalário líquido: %.2f", nome, cdemp, salario, salarioliq);
-    }
+	public float getSalarioliq() {
+		return salarioliq;
+	}
+
+	public void setSalarioliq(float salarioliq) {
+		this.salarioliq = salarioliq;
+	}
+
+	public float getSalario() {
+		return salario;
+	}
+
+	public void setSalario(float salario) {
+		this.salario = salario;
+	}
+
 }

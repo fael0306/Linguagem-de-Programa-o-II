@@ -1,26 +1,26 @@
 public class Pessoa {
 
-    private String nome;
-    private String dataNascimento;
+	private String nome;
+	private String datanascimento;
 
-    public Pessoa(String nome, String dataNascimento) {
-        setNome(nome);
-        setDataNascimento(dataNascimento);
-    }
+	public Pessoa(String nome, String datanascimento) {
+		setNome(nome);
+		setDatanascimento(datanascimento);
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
+	public String getDatanascimento() {
+		return datanascimento;
+	}
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+	public void setDatanascimento(String datanascimento) {
+		this.datanascimento = datanascimento;
+	}
 }
