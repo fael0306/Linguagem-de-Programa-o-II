@@ -77,8 +77,8 @@ public class ExP1Teste {
 		JOptionPane.showMessageDialog(null,family2[k].toString());
 		JOptionPane.showMessageDialog(null, family2[k].status());
 		}
-		JOptionPane.showMessageDialog(null, "O "+family2[2].getPai().getNome()+" é pai de Ágatha");
-		JOptionPane.showMessageDialog(null, "A "+family2[2].getMae().getNome()+" é mãe de Ágatha");
+		JOptionPane.showMessageDialog(null, "O "+family2[2].getPai().getNome()+" é pai de "+ family2[2].getNome());
+		JOptionPane.showMessageDialog(null, "A "+family2[2].getMae().getNome()+" é mãe de "+ family2[2].getNome());
 		
 		JOptionPane.showMessageDialog(null, Pessoa.cont());
 		
