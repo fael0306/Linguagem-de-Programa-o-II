@@ -18,7 +18,7 @@ public class ExP1Teste {
 		//Pessoa Carlos = new Pessoa("Carlos","Eduardo Balbino", LocalDate.of(1967, 5, 21),120,1.71F,'M');
 		//Pessoa Isabel = new Pessoa("Isabel","Cristina da Silva Manteiga", LocalDate.of(1963, 1, 12),120,1.65F,'F');
 		Scanner scanner = new Scanner(System.in);
-		for(int a=0;a<=args.length;a++){
+		for(int a=0;a<args.length;a++){
 			
 			System.out.print("Nome: ");
             String nome = scanner.next();
