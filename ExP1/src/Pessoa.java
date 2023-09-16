@@ -1,5 +1,3 @@
-package ExP1;
-
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -19,7 +17,7 @@ public class Pessoa {
 	private Pessoa mae;
 	
 	public String status() {
-		return nome +" está "+ status;
+		return nome +" estÃ¡ "+ status;
 	}
 	
 	public void setstatus(String status) {
@@ -30,7 +28,7 @@ public class Pessoa {
 		return status;
 	}
 	
-	public int getIdade() {
+	private int idade() {
 		LocalDate hoje = LocalDate.now();
 		LocalDate nascimento = datanascimento;
 		
@@ -39,6 +37,15 @@ public class Pessoa {
 		return idade.getYears();
 	}
 	
+	public Pessoa(String nome){
+		cont++;
+		setNome(nome);
+	}
+
+	public Pessoa(){
+		cont++;
+	}
+
 	public Pessoa(String nome, String sobrenome, LocalDate datanascimento, float peso, float altura, char genero) {
 		cont++;
 		setNome(nome);
@@ -50,8 +57,13 @@ public class Pessoa {
 	}
 	
 	public String toString() {
-		return String.format("Nome: %s %s\nIdade: %s\nPeso: %s\nAltura: %s\nGênero: %s",nome, sobrenome, getIdade(), peso, altura, genero);
+		if(datanascimento!=null){
+		return String.format("Nome: %s %s\nIdade: %s\nPeso: %s\nAltura: %s\nGÃªnero: %s",nome, sobrenome, idade(), peso, altura, genero);
 	}
+	else{
+		return String.format("Nome: %s %s\nPeso: %s\nAltura: %s\nGÃªnero: %s",nome, sobrenome, peso, altura, genero);
+	}
+}
 	
 	public static String cont(){
 		return "Existem "+cont+" pessoas";
@@ -88,7 +100,7 @@ public class Pessoa {
 	public void setPeso(float peso) {
 		this.peso = peso;
 		if(peso<2.5) {
-			System.out.println(peso+"??? Você tem raquitismo?");
+			System.out.println(peso+"? Por favor, entre com um peso coerente.");
 		}
 	}
 
@@ -98,11 +110,8 @@ public class Pessoa {
 
 	public void setAltura(float altura) {
 		this.altura = altura;
-		if(altura>=2.50){
-			System.out.println(altura+"??? Por que você não é jogador de basquete?");
-		}
-		if(altura<0.50) {
-			System.out.println(altura+"??? Nasceu agora?");
+		if(altura>=2.50 || altura<0.50){
+			System.out.println(altura+"? Tem certeza que possui esta altura?");
 		}
 	}
 
@@ -138,4 +147,3 @@ public class Pessoa {
 		this.mae = mae;
 	}
 }
-
