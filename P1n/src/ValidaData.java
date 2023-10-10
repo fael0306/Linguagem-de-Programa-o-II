@@ -1,5 +1,5 @@
 public class ValidaData {
-    
+
   static boolean isDia(int dia) {
     if (dia > 31 || dia < 1) {
       return false;
