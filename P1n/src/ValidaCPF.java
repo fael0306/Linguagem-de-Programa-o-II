@@ -1,6 +1,6 @@
 public class ValidaCPF {
 
-  public static boolean isCPF(String CPF) {
+    static boolean isCPF(String CPF) {
 
     CPF = CPF.replaceAll("[^0-9]", "");
     if (CPF.length() != 11) {
@@ -41,7 +41,7 @@ public class ValidaCPF {
     return true;
   }
 
-  public static long toLong(String CPF) {
+    static long toLong(String CPF) {
     String CPFstring = "";
     long CPFconvertido;
 
