@@ -28,10 +28,6 @@ public class P1nX {
       System.out.println("\nDigite o nome: ");
       String nome = leitura.nextLine();
 
-      if (nome == "") {
-        break;
-      }
-
       System.out.println("\nDigite o sobrenome: ");
       String sobrenome = leitura.nextLine();
 
