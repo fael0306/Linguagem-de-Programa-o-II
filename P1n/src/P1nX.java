@@ -2,15 +2,19 @@ import java.util.Scanner;
 
 public class P1nX {
   public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-    if (!ValidaCPF.isCPF(args[5])) {
+    while (!ValidaCPF.isCPF(args[5])) {
       System.out.println("Digite um CPF válido!");
-    } else {
-      Pessoa pessoalc = new Pessoa(args[0], args[1], Integer.parseInt(args[2]),
-        Integer.parseInt(args[3]), Integer.parseInt(args[4]), ValidaCPF.toLong(args[5]),
-        Float.parseFloat(args[6]), Float.parseFloat(args[7]));
-      System.out.println(pessoalc.toString());
+      args[5] = scanner.next();
     }
+
+    Pessoa pessoalc = new Pessoa(args[0], args[1], Integer.parseInt(args[2]),
+      Integer.parseInt(args[3]), Integer.parseInt(args[4]), ValidaCPF.toLong(args[5]),
+      Float.parseFloat(args[6]), Float.parseFloat(args[7]));
+
+    System.out.println("");
+    System.out.println(pessoalc.toString());
 
     Scanner leitura = new Scanner(System.in);
     System.out.println("\nDigite a quantidade de pessoas que você deseja adicionar: ");
@@ -23,6 +27,10 @@ public class P1nX {
 
       System.out.println("\nDigite o nome: ");
       String nome = leitura.nextLine();
+
+      if (nome == "") {
+        break;
+      }
 
       System.out.println("\nDigite o sobrenome: ");
       String sobrenome = leitura.nextLine();
@@ -38,6 +46,10 @@ public class P1nX {
 
       System.out.println("\nDigite o CPF: ");
       long numCPF = leitura.nextLong();
+      while (!ValidaCPF.isCPF(Long.toString(numCPF))) {
+        System.out.println("Digite um CPF válido!");
+        numCPF = leitura.nextLong();
+      }
 
       System.out.println("\nDigite o peso: ");
       float peso = leitura.nextFloat();
@@ -49,16 +61,12 @@ public class P1nX {
         altura == 0.0) {
         pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano);
       } else {
-        if (!ValidaCPF.isCPF(Long.toString(numCPF))) {
-          System.out.println("Digite um CPF válido!");
-        } else {
-          pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, peso, altura);
-        }
+        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, peso, altura);
       }
     }
 
     leitura.close();
-
+    scanner.close();
     for (int k = 0; k < qtd; k++) {
       System.out.println("\n");
       System.out.println(pessoas[k].toString());
