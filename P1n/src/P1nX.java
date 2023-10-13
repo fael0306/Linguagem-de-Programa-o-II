@@ -11,7 +11,7 @@ public class P1nX {
         Float.parseFloat(args[6]), Float.parseFloat(args[7]));
       System.out.println(pessoalc.toString());
     }
-    
+
     Scanner leitura = new Scanner(System.in);
     System.out.println("\nDigite a quantidade de pessoas que você deseja adicionar: ");
     int qtd = leitura.nextInt();
@@ -49,7 +49,11 @@ public class P1nX {
         altura == 0.0) {
         pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano);
       } else {
-        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, peso, altura);
+        if (!ValidaCPF.isCPF(Long.toString(numCPF))) {
+          System.out.println("Digite um CPF válido!");
+        } else {
+          pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, peso, altura);
+        }
       }
     }
 
