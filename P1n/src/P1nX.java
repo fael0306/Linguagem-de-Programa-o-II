@@ -51,26 +51,54 @@ public class P1nX {
       String peso = leitura.next();
       float pesof;
       pesof = Float.parseFloat(peso);
+      leitura.nextLine();
 
       System.out.println("\nDigite o altura: ");
-      String altura = leitura.next();
+      String altura = leitura.nextLine();
       float alturaf;
       alturaf = Float.parseFloat(altura);
 
+      System.out.println("\nDigite o gênero (M ou F): ");
+      String genero = leitura.next();
+
       if (numCPF == 0 || pesof == 0.0 ||
         alturaf == 0.0) {
-        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano);
+        if (genero.equalsIgnoreCase("m")) {
+          pessoas[k] = new Homem(nome, sobrenome, dia, mes, ano);
+        } else if (genero.equalsIgnoreCase("f")) {
+          pessoas[k] = new Mulher(nome, sobrenome, dia, mes, ano);
+        } else {
+          pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano);
+        }
       } else {
-        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
+        if (genero.equalsIgnoreCase("m")) {
+          pessoas[k] = new Homem(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
+        } else if (genero.equalsIgnoreCase("f")) {
+          pessoas[k] = new Mulher(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
+        } else {
+          pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
+        }
       }
     }
 
     leitura.close();
     scanner.close();
+
+    int conthomem = 0, contmulher = 0;
+
     for (int k = 0; k < qtd; k++) {
       System.out.println("\n");
       System.out.println(pessoas[k].toString());
+      if (pessoas[k] instanceof Homem) {
+        conthomem++;
+      }
+      if (pessoas[k] instanceof Mulher) {
+        contmulher++;
+      }
     }
-    System.out.println("\n\nQuantidade de pessoas:"+ Pessoa.numPessoas());
+
+    System.out.println("\n\nQuantidade de pessoas: " + Pessoa.numPessoas());
+    System.out.println("\nA quantidade de homens é: " + conthomem);
+    System.out.println("\nA quantidade de mulheres é: " + contmulher);
   }
 }
