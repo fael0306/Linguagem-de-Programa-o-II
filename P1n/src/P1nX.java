@@ -48,16 +48,20 @@ public class P1nX {
       }
 
       System.out.println("\nDigite o peso: ");
-      float peso = leitura.nextFloat();
+      String peso = leitura.next();
+      float pesof;
+      pesof = Float.parseFloat(peso);
 
       System.out.println("\nDigite o altura: ");
-      float altura = leitura.nextFloat();
+      String altura = leitura.next();
+      float alturaf;
+      alturaf = Float.parseFloat(altura);
 
-      if (numCPF == 0 || peso == 0.0 ||
-        altura == 0.0) {
+      if (numCPF == 0 || pesof == 0.0 ||
+        alturaf == 0.0) {
         pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano);
       } else {
-        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, peso, altura);
+        pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
       }
     }
 
@@ -67,5 +71,6 @@ public class P1nX {
       System.out.println("\n");
       System.out.println(pessoas[k].toString());
     }
+    System.out.println("\n\nQuantidade de pessoas:"+ Pessoa.numPessoas());
   }
 }
