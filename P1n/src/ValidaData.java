@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 public class ValidaData {
 
   static boolean isDia(int dia) {
@@ -31,11 +33,9 @@ public class ValidaData {
       if (diaint > 31 || diaint < 1) {
         return false;
       }
-    } catch (NumberFormatException e) {
-      System.out.println(e.getCause());
+    } catch (InputMismatchException e) {
       return false;
     }
-
     return true;
   }
 
@@ -48,8 +48,7 @@ public class ValidaData {
       if (mesint > 12 || mesint < 1) {
         return false;
       }
-    } catch (NumberFormatException e) {
-      System.out.println(e.getCause());
+    } catch (InputMismatchException e) {
       return false;
     }
     return true;
@@ -65,8 +64,7 @@ public class ValidaData {
       if (anoint > 2023 || anoint < 1900) {
         return false;
       }
-    } catch (NumberFormatException e) {
-      System.out.println(e.getCause());
+    } catch (InputMismatchException e) {
       return false;
     }
     return true;

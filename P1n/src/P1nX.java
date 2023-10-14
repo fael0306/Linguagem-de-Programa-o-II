@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class P1nX {
@@ -7,6 +8,21 @@ public class P1nX {
     while (!ValidaCPF.isCPF(args[5])) {
       System.out.println("Digite um CPF válido!");
       args[5] = scanner.next();
+    }
+
+    while(!ValidaData.isDia(args[2])){
+      System.out.println("Digite um dia válido!");
+      args[2] = scanner.next();
+    }
+
+    while(!ValidaData.isMes(args[3])){
+      System.out.println("Digite um mês válido!");
+      args[3] = scanner.next();
+    }
+
+    while(!ValidaData.isAno(args[4])){
+      System.out.println("Digite um ano válido!");
+      args[4] = scanner.next();
     }
 
     Pessoa pessoalc = new Pessoa(args[0], args[1], Integer.parseInt(args[2]),
@@ -35,21 +51,62 @@ public class P1nX {
       System.out.println("\nDigite o sobrenome: ");
       String sobrenome = leitura.nextLine();
 
+      int dia;
       System.out.println("\nDigite o dia do nascimento: ");
-      int dia = leitura.nextInt();
+      while (true) {
+            try {
+                dia = leitura.nextInt();
+                if (ValidaData.isDia(dia)) {
+                    break;
+                } else {
+                    System.out.println("Digite um dia válido!");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um valor numérico válido!");
+                leitura.nextLine();
+            }
+        }
 
+      int mes;
       System.out.println("\nDigite o mês do nascimento: ");
-      int mes = leitura.nextInt();
+      while (true) {
+            try {
+                mes = leitura.nextInt();
+                if (ValidaData.isMes(mes)) {
+                    break;
+                } else {
+                    System.out.println("Digite um mês válido!");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um valor numérico válido!");
+                leitura.nextLine();
+            }
+        }
 
+      int ano;
       System.out.println("\nDigite o ano do nascimento: ");
-      int ano = leitura.nextInt();
+      while (true) {
+            try {
+                ano = leitura.nextInt();
+                if (ValidaData.isAno(ano)) {
+                    break;
+                } else {
+                    System.out.println("Digite um ano válido!");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um valor numérico válido!");
+                leitura.nextLine();
+            }
+        }
 
       System.out.println("\nDigite o CPF: ");
-      long numCPF = leitura.nextLong();
-      while (!ValidaCPF.isCPF(Long.toString(numCPF))) {
+      String numCPFstr = leitura.next();
+      while (!ValidaCPF.isCPF(numCPFstr)) {
         System.out.println("Digite um CPF válido!");
-        numCPF = leitura.nextLong();
+        numCPFstr = leitura.next();
       }
+      long numCPF = ValidaCPF.toLong(numCPFstr);
+      leitura.nextLine();
 
       System.out.println("\nDigite o peso: ");
       String peso = leitura.next();
