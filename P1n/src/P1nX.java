@@ -22,11 +22,15 @@ public class P1nX {
     leitura.nextLine();
 
     Pessoa[] pessoas = new Pessoa[qtd];
-
-    for (int k = 0; k < qtd; k++) {
+    int k = 0;
+    while (k < qtd) {
 
       System.out.println("\nDigite o nome: ");
       String nome = leitura.nextLine();
+
+      if (nome.equals("")) {
+        break;
+      }
 
       System.out.println("\nDigite o sobrenome: ");
       String sobrenome = leitura.nextLine();
@@ -59,7 +63,7 @@ public class P1nX {
       alturaf = Float.parseFloat(altura);
 
       System.out.println("\nDigite o gênero (M ou F): ");
-      String genero = leitura.next();
+      String genero = leitura.nextLine();
 
       if (numCPF == 0 || pesof == 0.0 ||
         alturaf == 0.0) {
@@ -79,6 +83,7 @@ public class P1nX {
           pessoas[k] = new Pessoa(nome, sobrenome, dia, mes, ano, numCPF, pesof, alturaf);
         }
       }
+      k++;
     }
 
     leitura.close();
@@ -86,14 +91,16 @@ public class P1nX {
 
     int conthomem = 0, contmulher = 0;
 
-    for (int k = 0; k < qtd; k++) {
-      System.out.println("\n");
-      System.out.println(pessoas[k].toString());
-      if (pessoas[k] instanceof Homem) {
-        conthomem++;
-      }
-      if (pessoas[k] instanceof Mulher) {
-        contmulher++;
+    for (int n = 0; n < pessoas.length; n++) {
+      if (pessoas[n] != null) {
+        System.out.println("\n");
+        System.out.println(pessoas[n].toString());
+        if (pessoas[n] instanceof Homem) {
+          conthomem++;
+        }
+        if (pessoas[n] instanceof Mulher) {
+          contmulher++;
+        }
       }
     }
 
