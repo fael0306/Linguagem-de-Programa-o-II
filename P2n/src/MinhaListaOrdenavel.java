@@ -2,12 +2,6 @@ import java.util.*;
 
 public class MinhaListaOrdenavel {
 
-	final int a = 1;
-	final int b = 2;
-	final int x = 3;
-	final int d = 4;
-	final int e = 5;
-
 	private ArrayList<PessoaIMC> listapessoa = new ArrayList<PessoaIMC>();
 
 	public void add(PessoaIMC p) {

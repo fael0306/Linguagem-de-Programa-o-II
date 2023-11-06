@@ -1,6 +1,6 @@
 public class Mulher extends PessoaIMC {
 
-	public Mulher(String nome, String sobreNome, int dia, int mes, int ano, long numCPF) {
+	public Mulher(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura) {
 		super(nome, sobreNome, dia, mes, ano, numCPF);
 		//TODO Auto-generated constructor stub
 	}

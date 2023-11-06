@@ -6,16 +6,11 @@ public class P2nX {
 
 		MinhaListaOrdenavel objeto = new MinhaListaOrdenavel();
 
-		/*objeto.add(new Homem("Rafael", "03/06/1999", 63, 1.70));
-		objeto.add(new Homem("Gabriel", "03/06/1999", 75, 1.80)); // Gabriel e Rafael s�o g�meos
-		objeto.add(new Homem("Carlos", "21/05/1967", 110, 1.65));
-		objeto.add(new Homem("Isabel", "12/01/1963", 80, 1.60));
-		objeto.add(new Homem("Adriano", "21/04/1987", 85, 1.71));
-		objeto.add(new Homem("Diego", "29/03/1985", 81, 1.63));
-		objeto.add(new Homem("Carla", "07/10/1991", 70, 1.85));
-		objeto.add(new Homem("Rafaela", "14/07/1994", 60, 1.55));
-		objeto.add(new Homem("Guilherme", "16/04/2006", 70, 1.65));
-		objeto.add(new Homem("Cristiano", "05/01/1998", 90, 1.88));
+		objeto.add(new Homem("Rafael", "Manteiga", 3, 6, 1999, 17183623742L, 70, 1.70F));
+		objeto.add(new Homem("Gabriel", "Manteiga", 3, 6, 1999, 17183653730L, 70, 1.70F));
+		objeto.add(new Homem("Carlos Eduardo", "Balbino", 21, 5, 1967, 0L, 110, 1.65F));
+		// Criar mais 2 objetos Homem e 5 objetos Mulher
+	
 		try {
 			Scanner l1 = new Scanner(System.in);
 			System.out.println("1.Imprimir lista");
@@ -24,13 +19,15 @@ public class P2nX {
 
 			if (o1 == 1) {
 				Scanner l = new Scanner(System.in);
-				System.out.println("Escolha seu modo de ordena��o.");
+				System.out.println("Escolha seu modo de ordenação.");
 				System.out.println("1.Alfabetica (A-Z)");
 				System.out.println("2.Alfabetica (Z-A)");
 				System.out.println("3.Menor Peso");
 				System.out.println("4.Maior Altura");
 				System.out.println("5.Menor IMC");
 				int o = Integer.parseInt(l.nextLine());
+
+				// E se não for um número de 1 a 5? Tratar.
 
 				objeto.ordena(o);
 
@@ -40,19 +37,19 @@ public class P2nX {
 
 				l.close();
 
-			// Tratar melhor os erros abaixo
+			// Tratar os erros abaixo
 			} else if (o1 == 2) {
 				System.exit(0);
 			} else {
-				System.out.println("Voc� escolheu uma op��o inv�lida. O programa ser� encerrado.");
+				System.out.println("Você escolheu uma opção inválida. O programa será encerrado.");
 				System.exit(0);
 			}
 
 			l1.close();
 
 		} catch (NumberFormatException e) {
-			System.out.println("Voc� digitou uma op��o inv�lida. O programa ser� encerrado");
+			System.out.println("Você digitou uma opção inválida. O programa será encerrado");
 			System.exit(0);
-		}*/
+		}
 	}
 }

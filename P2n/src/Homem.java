@@ -1,6 +1,7 @@
 public class Homem extends PessoaIMC {
 
-	public Homem(String nome, String sobreNome, int dia, int mes, int ano, long numCPF) {
+
+	public Homem(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura) {
 		super(nome, sobreNome, dia, mes, ano, numCPF);
 		//TODO Auto-generated constructor stub
 	}
