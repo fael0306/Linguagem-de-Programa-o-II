@@ -6,12 +6,12 @@ public class P2nX {
 
 		MinhaListaOrdenavel objeto = new MinhaListaOrdenavel();
 
-		objeto.add(new Homem("Rafael", "Manteiga", 3, 6, 1999, 17183623742L, 70, 1.70F));
-		objeto.add(new Homem("Gabriel", "Manteiga", 3, 6, 1999, 17183653730L, 70, 1.70F));
-		objeto.add(new Homem("Carlos Eduardo", "Balbino", 21, 5, 1967, 83927107700L, 110, 1.68F));
-		objeto.add(new Homem("Isaias Luiz", "dos Santos", 27, 10, 1974, 85457655415L, 70, 1.65F));
-		objeto.add(new Homem("Isaias Luiz", "dos Santos Junior", 4, 4, 1996, 11764822463L, 80, 1.80F));
-		objeto.add(new Mulher("Isabella","Oliveira dos Santos",28,9,1999,11764832426L,55,1.67F));
+		objeto.add(new Homem("Rafael", "Manteiga", 3, 6, 1999, 17183623742L, 70F, 1.70F));
+		objeto.add(new Homem("Gabriel", "Manteiga", 3, 6, 1999, 17183653730L, 70F, 1.70F));
+		objeto.add(new Homem("Carlos Eduardo", "Balbino", 21, 5, 1967, 83927107700L, 110F, 1.68F));
+		objeto.add(new Homem("Isaias Luiz", "dos Santos", 27, 10, 1974, 85457655415L, 70F, 1.65F));
+		objeto.add(new Homem("Isaias Luiz", "dos Santos Junior", 4, 4, 1996, 11764822463L, 80F, 1.80F));
+		objeto.add(new Mulher("Isabella","Oliveira dos Santos",28,9,1999,11764832426L,55F,1.67F));
 		objeto.add(new Mulher("Isabel Cristina", "da Silva Manteiga", 12, 1, 1963, 73681288704L, 80F, 1.60F));
 		objeto.add(new Mulher("Daniela", "Oliveira dos Santos", 2, 11, 1975, 92984320468L, 65F, 1.59F));
 		objeto.add(new Mulher("Isadora Maria", "Oliveira dos Santos", 6, 9, 2007, 11764827422L, 45F, 1.60F));
