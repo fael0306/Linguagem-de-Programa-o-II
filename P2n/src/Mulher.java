@@ -29,7 +29,7 @@ public class Mulher extends PessoaIMC {
 	
 		infopessoa = super.toString();
 		
-		retorno = infopessoa+"\nGênero: Feminino"+"\nIMC:"+resultIMC();
+		retorno = infopessoa+"\nGênero: Feminino"+"\n"+resultIMC();
 	
 		return retorno;
 	  }

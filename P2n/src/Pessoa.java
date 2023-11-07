@@ -128,29 +128,14 @@ public class Pessoa {
   public String toString() {
     String retorno;
 
-    if (getNumCPF() == 0 || getPeso() == 0.0 || getAltura() == 0.0) {
-      retorno = "Nome: " + getNome() +
-        "\nSobrenome: " + getSobreNome() +
-        "\nIdade: " + getIdade();
-    } else {
-      // Graças a CPF's que possam começar com 0, este if se faz necessário
-      // Apenas posso usar o método toString após validar o CPF, de qualquer forma
-      if (Long.toString(getNumCPF()).length() < 11) {
         retorno = "Nome: " + getNome() +
           "\nSobrenome: " + getSobreNome() +
           "\nIdade: " + getIdade() +
-          "\nCPF: 0" + getNumCPF() +
-          "\nPeso: " + getPeso() +
-          "\nAltura: " + getAltura();
-      } else {
-        retorno = "Nome: " + getNome() +
-          "\nSobrenome: " + getSobreNome() +
-          "\nIdade: " + getIdade() +
+          "\nData de Nascimento: " + getDia() + "/" + getMes() + "/" + getAno() +
           "\nCPF: " + getNumCPF() +
           "\nPeso: " + getPeso() +
           "\nAltura: " + getAltura();
-      }
-    }
+    
     return retorno;
   }
 }
