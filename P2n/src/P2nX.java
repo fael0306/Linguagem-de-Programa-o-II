@@ -44,10 +44,12 @@ public class P2nX {
                         System.out.println("8.Maior altura");
 						System.out.println("9.Menor IMC");
 						System.out.println("10.Maior IMC");
+						System.out.println("11.Menor CPF");
+						System.out.println("12.Maior CPF");
 
                         try {
                             o = l.nextInt();
-                            if (o < 1 || o > 10) {
+                            if (o < 1 || o > 12) {
                                 System.out.println("Opção inválida. Tente novamente.");
                             } else {
                                 objeto.ordena(o);
@@ -61,7 +63,7 @@ public class P2nX {
                             l.nextLine();
                             o = 0;
                         }
-                    } while (o < 1 || o > 10);
+                    } while (o < 1 || o > 12);
 
                     l.close();
                 }

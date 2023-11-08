@@ -82,6 +82,20 @@ public Comparator<PessoaIMC> IMC2C = new Comparator<PessoaIMC>() {
   }
 };
 
+// Menor CPF
+public Comparator<PessoaIMC> CPFC = new Comparator<PessoaIMC>() {
+  public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return Long.compare(p1.numCPF, p2.numCPF);
+  }
+};
+
+// Maior CPF
+public Comparator<PessoaIMC> CPFC2 = new Comparator<PessoaIMC>() {
+  public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return Long.compare(p2.numCPF, p1.numCPF);
+  }
+};
+
   public ArrayList < PessoaIMC > ordena(final int c) {
 
     Comparator < PessoaIMC > comparador = null;
@@ -98,6 +112,7 @@ public Comparator<PessoaIMC> IMC2C = new Comparator<PessoaIMC>() {
       break;
     case 4:
       comparador = sobrenomeZAC;
+      break;
     case 5:
       comparador = pesoC;
       break;
@@ -115,6 +130,12 @@ public Comparator<PessoaIMC> IMC2C = new Comparator<PessoaIMC>() {
       break;
     case 10:
       comparador = IMC2C;
+      break;
+    case 11:
+      comparador = CPFC;
+      break;
+    case 12:
+      comparador = CPFC2;
       break;
     }
 
