@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class P2nX {
@@ -17,53 +18,58 @@ public class P2nX {
 		objeto.add(new Mulher("Isadora Maria", "Oliveira dos Santos", 6, 9, 2007, 11764827422L, 45F, 1.60F));
 		objeto.add(new Mulher("Fernanda Angélica", "Alves de Souza Gomes", 5, 1, 1980, 12455966755L, 70F, 1.95F));
 
-		try {
-			Scanner l1 = new Scanner(System.in);
-			System.out.println("1.Imprimir lista");
-			System.out.println("2.Sair");
-			int o1 = Integer.parseInt(l1.nextLine());
+ Scanner l1 = new Scanner(System.in);
 
-			if (o1 == 1) {
-				Scanner l = new Scanner(System.in);
-				System.out.println("Escolha seu modo de ordenação.");
-				System.out.println("1.Alfabetica (A-Z)");
-				System.out.println("2.Alfabetica (Z-A)");
-				System.out.println("3.Menor Peso");
-				System.out.println("4.Maior Altura");
-				System.out.println("5.Menor IMC");
-				int o = Integer.parseInt(l.nextLine());
+        int o1;
+        do {
+            System.out.println("1.Imprimir lista");
+            System.out.println("2.Sair");
 
-				// E se não for um número de 1 a 5? Tratar.
-				// Acrescentar métodos de ordenação (todos os dados podem ser ordenados)
-				// Nome
-				// Sobrenome
-				// Idade (maior e menor)
-				// Peso (maior e menor)
-				// Altura (maior e menor)
-				// IMC (maior e menor)
-				// CPF (maior e menor)
+            try {
+                o1 = l1.nextInt();
+                if (o1 < 1 || o1 > 2) {
+                    System.out.println("Opção inválida. Tente novamente.");
+                } else if (o1 == 1) {
+                    Scanner l = new Scanner(System.in);
+                    int o;
+                    do {
+                        System.out.println("Escolha seu modo de ordenação.");
+                        System.out.println("1.Alfabética (A-Z)");
+                        System.out.println("2.Alfabética (Z-A)");
+                        System.out.println("3.Menor peso");
+                        System.out.println("4.Maior peso");
+                        System.out.println("5.Menor altura");
+                        System.out.println("6.Maior altura");
+						System.out.println("7.Menor IMC");
+						System.out.println("8.Maior IMC");
 
-				objeto.ordena(o);
+                        try {
+                            o = l.nextInt();
+                            if (o < 1 || o > 8) {
+                                System.out.println("Opção inválida. Tente novamente.");
+                            } else {
+                                objeto.ordena(o);
 
-				for (int n = 0; n <= 9; n++) {
-					System.out.println(objeto.get(n).toString());
-				}
+                                for (int n = 0; n <= 9; n++) {
+                                    System.out.println(objeto.get(n).toString());
+                                }
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("Entrada inválida. Tente novamente.");
+                            l.nextLine();
+                            o = 0;
+                        }
+                    } while (o < 1 || o > 8);
 
-				l.close();
+                    l.close();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Opção inválida. Tente novamente.");
+                l1.nextLine();
+                o1 = 0;
+            }
+        } while (o1 < 1 || o1 > 2);
 
-			// Tratar os erros abaixo
-			} else if (o1 == 2) {
-				System.exit(0);
-			} else {
-				System.out.println("Você escolheu uma opção inválida. O programa será encerrado.");
-				System.exit(0);
-			}
-
-			l1.close();
-
-		} catch (NumberFormatException e) {
-			System.out.println("Você digitou uma opção inválida. O programa será encerrado");
-			System.exit(0);
-		}
-	}
+        l1.close();
+    }
 }

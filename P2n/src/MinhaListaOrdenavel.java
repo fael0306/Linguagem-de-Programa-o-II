@@ -12,35 +12,61 @@ public class MinhaListaOrdenavel {
     return listapessoa.get(index);
   }
 
-  public Comparator < PessoaIMC > pesoC = new Comparator < PessoaIMC > () {
-    public int compare(PessoaIMC p1, PessoaIMC p2) {
-      return (int) Math.round(p2.getPeso() - p1.getPeso());
-    }
-  };
-
+   // Alfabética (A-Z)
   public Comparator < PessoaIMC > nomeAZC = new Comparator < PessoaIMC > () {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
       return p1.getNome().compareTo(p2.getNome());
     }
   };
 
+  // Alfabética (Z-A)
   public Comparator < PessoaIMC > nomeZAC = new Comparator < PessoaIMC > () {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
       return p2.getNome().compareTo(p1.getNome());
     }
   };
 
-  public Comparator < PessoaIMC > alturaC = new Comparator < PessoaIMC > () {
+  // Menor peso
+  public Comparator<PessoaIMC> pesoC = new Comparator<PessoaIMC>() {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
-      return (int) Math.round(p2.getAltura() - p1.getAltura());
+        return Double.compare(p1.peso, p2.peso);
     }
-  };
+};
 
-  public Comparator < PessoaIMC > IMCC = new Comparator < PessoaIMC > () {
+// Maior peso
+  public Comparator<PessoaIMC> peso2C = new Comparator<PessoaIMC>() {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
-      return (int) Math.round(p2.calculaIMC() - p1.calculaIMC());
+        return Double.compare(p2.peso, p1.peso);
     }
-  };
+};
+
+  // Menor altura
+  public Comparator<PessoaIMC> alturaC = new Comparator<PessoaIMC>() {
+    public int compare(PessoaIMC p1, PessoaIMC p2) {
+        return Double.compare(p1.altura, p2.altura);
+    }
+};
+
+  // Maior altura
+  public Comparator<PessoaIMC> altura2C = new Comparator<PessoaIMC>() {
+    public int compare(PessoaIMC p1, PessoaIMC p2) {
+        return Double.compare(p2.altura, p1.altura);
+    }
+};
+
+// Menor IMC
+public Comparator<PessoaIMC> IMCC = new Comparator<PessoaIMC>() {
+  public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return Double.compare(p1.calculaIMC(), p2.calculaIMC());
+  }
+};
+
+// Maior IMC
+public Comparator<PessoaIMC> IMC2C = new Comparator<PessoaIMC>() {
+  public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return Double.compare(p2.calculaIMC(), p1.calculaIMC());
+  }
+};
 
   public ArrayList < PessoaIMC > ordena(final int c) {
 
@@ -57,10 +83,19 @@ public class MinhaListaOrdenavel {
       comparador = pesoC;
       break;
     case 4:
-      comparador = alturaC;
+      comparador = peso2C;
       break;
     case 5:
+      comparador = alturaC;
+      break;
+    case 6:
+      comparador = altura2C;
+      break;
+    case 7:
       comparador = IMCC;
+      break;
+    case 8:
+      comparador = IMC2C;
       break;
     }
 
