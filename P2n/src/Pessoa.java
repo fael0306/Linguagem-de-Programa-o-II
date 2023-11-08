@@ -128,14 +128,14 @@ public class Pessoa {
   public String toString() {
     String retorno;
 
-        retorno = "\n\n\nNome: " + getNome() +
-          "\nSobrenome: " + getSobreNome() +
-          "\nIdade: " + getIdade() +
-          "\nData de Nascimento: " + getDia() + "/" + getMes() + "/" + getAno() +
-          "\nCPF: " + getNumCPF() +
-          "\nPeso: " + getPeso() +
-          "\nAltura: " + getAltura();
-    
+    retorno = "\n\n\nNome: " + getNome() +
+      "\nSobrenome: " + getSobreNome() +
+      "\nIdade: " + getIdade() +
+      "\nData de Nascimento: " + getDia() + "/" + getMes() + "/" + getAno() +
+      "\nCPF: " + getNumCPF() +
+      "\nPeso: " + getPeso() +
+      "\nAltura: " + getAltura();
+
     return retorno;
   }
 }
