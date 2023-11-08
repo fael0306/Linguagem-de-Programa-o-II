@@ -12,17 +12,31 @@ public class MinhaListaOrdenavel {
     return listapessoa.get(index);
   }
 
-   // Alfabética (A-Z)
+   // Nome (A-Z)
   public Comparator < PessoaIMC > nomeAZC = new Comparator < PessoaIMC > () {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
       return p1.getNome().compareTo(p2.getNome());
     }
   };
 
-  // Alfabética (Z-A)
+  // Nome (Z-A)
   public Comparator < PessoaIMC > nomeZAC = new Comparator < PessoaIMC > () {
     public int compare(PessoaIMC p1, PessoaIMC p2) {
       return p2.getNome().compareTo(p1.getNome());
+    }
+  };
+
+   // Sobrenome (A-Z)
+  public Comparator < PessoaIMC > sobrenomeAZC = new Comparator < PessoaIMC > () {
+    public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return p1.getSobreNome().compareTo(p2.getSobreNome());
+    }
+  };
+
+  // Sobrenome (Z-A)
+  public Comparator < PessoaIMC > sobrenomeZAC = new Comparator < PessoaIMC > () {
+    public int compare(PessoaIMC p1, PessoaIMC p2) {
+      return p2.getSobreNome().compareTo(p1.getSobreNome());
     }
   };
 
@@ -80,21 +94,26 @@ public Comparator<PessoaIMC> IMC2C = new Comparator<PessoaIMC>() {
       comparador = nomeZAC;
       break;
     case 3:
-      comparador = pesoC;
+      comparador = sobrenomeAZC;
       break;
     case 4:
-      comparador = peso2C;
-      break;
+      comparador = sobrenomeZAC;
     case 5:
-      comparador = alturaC;
+      comparador = pesoC;
       break;
     case 6:
-      comparador = altura2C;
+      comparador = peso2C;
       break;
     case 7:
-      comparador = IMCC;
+      comparador = alturaC;
       break;
     case 8:
+      comparador = altura2C;
+      break;
+    case 9:
+      comparador = IMCC;
+      break;
+    case 10:
       comparador = IMC2C;
       break;
     }
