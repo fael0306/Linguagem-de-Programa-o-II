@@ -8,7 +8,7 @@ public class Usuario extends Pessoa {
     String endereco;
     int codigoUsuario;
     ArrayList<Emprest> Hist;
-   
+
     public Usuario(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura,
             String endereco, int codigoUsuario) {
         super(nome, sobreNome, dia, mes, ano, numCPF, peso, altura);
@@ -19,5 +19,29 @@ public class Usuario extends Pessoa {
     public void addLivroHist(GregorianCalendar datadelocacao, String codLivro){
         Emprest emprestimo = new Emprest(datadelocacao,codLivro);
         Hist.add(emprestimo);
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public int getCodigoUsuario() {
+        return codigoUsuario;
+    }
+
+    public void setCodigoUsuario(int codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
+    }
+
+    public ArrayList<Emprest> getHist() {
+        return Hist;
+    }
+
+    public void setHist(ArrayList<Emprest> hist) {
+        Hist = hist;
     }
 }

@@ -5,16 +5,62 @@ import java.util.GregorianCalendar;
 
 public class Livro {
     
-    String codigoLivro;
+    int codigoLivro;
     String tituloLivro;
     String categoria;
     int qtd;
     int emprestados;
     ArrayList<EmprestPara> hist;
 
-   
+    public int getCodigoLivro() {
+        return codigoLivro;
+    }
 
-    public Livro(String codigoLivro, String tituloLivro, String categoria, int qtd, int emprestados,
+    public void setCodigoLivro(int codigoLivro) {
+        this.codigoLivro = codigoLivro;
+    }
+
+    public String getTituloLivro() {
+        return tituloLivro;
+    }
+
+    public void setTituloLivro(String tituloLivro) {
+        this.tituloLivro = tituloLivro;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
+
+    public int getEmprestados() {
+        return emprestados;
+    }
+
+    public void setEmprestados(int emprestados) {
+        this.emprestados = emprestados;
+    }
+
+    public ArrayList<EmprestPara> getHist() {
+        return hist;
+    }
+
+    public void setHist(ArrayList<EmprestPara> hist) {
+        this.hist = hist;
+    }
+
+    public Livro(int codigoLivro, String tituloLivro, String categoria, int qtd, int emprestados,
             ArrayList<EmprestPara> hist) {
         this.codigoLivro = codigoLivro;
         this.tituloLivro = tituloLivro;
