@@ -5,14 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
+import java.util.List;
 
 public class Biblioteca {
     Hashtable<Integer, Usuario> usuarios;
-    Hashtable<Integer, Livro > livros;
+    Hashtable<String, Livro > livros;
 
-    public Biblioteca(Hashtable<Integer, Usuario> usuarios, Hashtable<Integer, Livro> livros) {
+    public Biblioteca(Hashtable<Integer, Usuario> usuarios, Hashtable<String, Livro> livros) {
         this.usuarios = usuarios;
         this.livros = livros;
     }
@@ -53,13 +56,12 @@ public class Biblioteca {
 
     public void leArquivo(String arquivo){
         try (ObjectInputStream arq = new ObjectInputStream(new FileInputStream(arquivo))) {
-            Hashtable<Integer, ?> tabelalida = (Hashtable<Integer, ?>) arq.readObject();
             if (arquivo.contains("usuarios")){
-                usuarios = (Hashtable<Integer, Usuario>) tabelalida;
+                usuarios = (Hashtable<Integer, Usuario>) arq.readObject();
                 System.out.println("Cadastro de usuários lido com sucesso.");
             }
             else if(arquivo.contains("livros")){
-                livros = (Hashtable<Integer, Livro>) tabelalida;
+                livros = (Hashtable<String, Livro>) arq.readObject();
                 System.out.println("Acervo de livros lido com sucesso.");
             }
             else{
@@ -79,7 +81,7 @@ public class Biblioteca {
         GregorianCalendar dataemprestimo = (GregorianCalendar) GregorianCalendar.getInstance();
         GregorianCalendar datadevolucao = (GregorianCalendar) dataemprestimo.clone();
         datadevolucao.add(GregorianCalendar.DAY_OF_MONTH,7);
-        livro.addUsuarioHist(dataemprestimo,datadevolucao,usuario.getCodigoUsuario());
+        livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
     }
 
     public void devolveLivro(Usuario usuario, Livro livro){
@@ -92,5 +94,37 @@ public class Biblioteca {
         GregorianCalendar dataemprestimo = (GregorianCalendar) datadevolucao.clone();
         dataemprestimo.add(GregorianCalendar.DAY_OF_MONTH, -7);
         livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
+    }
+
+    public String imprimeLivros(){
+        String strresultado="";
+        if(livros != null){
+            ArrayList<Livro> listadelivros = new ArrayList<>(livros.values());
+            listadelivros.sort(Comparator.comparing(Livro::getTituloLivro));
+        
+        for(Livro livro : listadelivros){
+            strresultado = strresultado+livro.toString()+"\n";
+        }
+    }
+    else{
+        strresultado = "Nenhum livro encontrado.";
+    }
+    return strresultado;
+    }
+
+    public String imprimeUsuarios(){
+        String strresultado="";
+        if(usuarios != null){
+            ArrayList<Usuario> listadeusuarios = new ArrayList<>(usuarios.values());
+            listadeusuarios.sort(Comparator.comparing(Usuario::getNome));
+        
+        for(Usuario usuario : listadeusuarios){
+            strresultado = strresultado+usuario.toString()+"\n";
+        }
+    }
+    else{
+        strresultado = "Nenhum usuário encontrado.";
+    }
+    return strresultado;
     }
 }

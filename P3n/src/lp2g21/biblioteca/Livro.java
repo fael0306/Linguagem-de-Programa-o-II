@@ -5,18 +5,18 @@ import java.util.GregorianCalendar;
 
 public class Livro {
     
-    int codigoLivro;
+    String codigoLivro;
     String tituloLivro;
     String categoria;
     int qtd;
     int emprestados;
     ArrayList<EmprestPara> hist;
 
-    public int getCodigoLivro() {
+    public String getCodigoLivro() {
         return codigoLivro;
     }
 
-    public void setCodigoLivro(int codigoLivro) {
+    public void setCodigoLivro(String codigoLivro) {
         this.codigoLivro = codigoLivro;
     }
 
@@ -60,7 +60,7 @@ public class Livro {
         this.hist = hist;
     }
 
-    public Livro(int codigoLivro, String tituloLivro, String categoria, int qtd, int emprestados,
+    public Livro(String codigoLivro, String tituloLivro, String categoria, int qtd, int emprestados,
             ArrayList<EmprestPara> hist) {
         this.codigoLivro = codigoLivro;
         this.tituloLivro = tituloLivro;
