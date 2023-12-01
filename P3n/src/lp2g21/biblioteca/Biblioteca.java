@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
-import java.util.List;
 
 public class Biblioteca {
     Hashtable<Integer, Usuario> usuarios;
