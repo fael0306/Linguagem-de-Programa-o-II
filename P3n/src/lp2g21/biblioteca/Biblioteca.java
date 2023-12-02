@@ -126,4 +126,20 @@ public class Biblioteca {
     }
     return strresultado;
     }
+
+    public Livro getLivro(String cod) throws LivroNaoCadastradoEx {
+        Livro livro = livros.get(cod);
+        if(livro==null){
+            throw new LivroNaoCadastradoEx("Livro não está disponível no momento.");
+        }
+        return livro;
+    }
+
+    public Usuario getUsuario(int cod) throws UsuarioNaoCadastradoEx {
+        Usuario usuario = usuarios.get(cod);
+        if(usuario==null){
+            throw new UsuarioNaoCadastradoEx("Usuário inexistente.");
+        }
+        return usuario;
+    }
 }

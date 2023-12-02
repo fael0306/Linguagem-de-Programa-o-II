@@ -44,4 +44,15 @@ public class Usuario extends Pessoa {
     public void setHist(ArrayList<Emprest> hist) {
         Hist = hist;
     }
+
+    public String toString(){
+        String imp;
+
+        imp = super.toString() +
+        "\nEndereço " + getEndereco() + 
+        "\nCódigo do usuário: " + getCodigoUsuario() +
+        "\nHistórico: " + getHist();
+
+        return imp;
+    }
 }

@@ -10,7 +10,6 @@ public class EmprestPara {
         this.codigoUsuario = codigoUsuario;
     }
 
-
     GregorianCalendar dataemprestimo, datadevolucao;
     int codigoUsuario;
     
@@ -36,5 +35,15 @@ public class EmprestPara {
 
     public void setCodigoUsuario(int codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
+    }
+
+    public String toString(){
+        String imp;
+
+        imp = "Data de empréstimo: " + getDataemprestimo() + 
+        "\nData de devolução: " + getDatadevolucao() +
+        "\nCódigo do usuário: " + getCodigoUsuario();
+
+        return imp;
     }
 }

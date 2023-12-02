@@ -5,6 +5,11 @@ import java.util.GregorianCalendar;
 public class Emprest {
 
     GregorianCalendar datadeemprestimo;
+
+    public GregorianCalendar getDatadeemprestimo() {
+        return datadeemprestimo;
+    }
+
     GregorianCalendar datadevolucao;
 
     public Emprest(GregorianCalendar datadeemprestimo, String codigoLivro) {
@@ -19,4 +24,12 @@ public class Emprest {
         this.datadevolucao = new GregorianCalendar();
     }
     
+    public String toString(){
+        String imp;
+
+        imp = "Data de empréstimo: " + getDatadeemprestimo() + 
+        "\nData de devolução: " + getDatadevolucao();
+
+        return imp;
+    }
 }

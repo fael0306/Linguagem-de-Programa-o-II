@@ -93,4 +93,17 @@ public class Livro {
         hist.add(emprest2);
     }
 
+    public String toString(){
+        String imp;
+
+        imp = "Código do livro: " + getCodigoLivro() + 
+        "\nTítulo do livro: " + getTituloLivro() +
+        "\nCategoria do livro: " + getCategoria() +
+        "\nQuantidade total: " + getQtd() +
+        "\nQuantidade emprestado: " + getEmprestados() +
+        "\nHistórico: " + getHist();
+
+        return imp;
+    }
+
 }
