@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
-import java.util.concurrent.TimeUnit;
 
 public class Biblioteca {
     Hashtable<Integer, Usuario> usuarios;
@@ -54,6 +53,7 @@ public class Biblioteca {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void leArquivo(String arquivo){
         try (ObjectInputStream arq = new ObjectInputStream(new FileInputStream(arquivo))) {
             if (arquivo.contains("usuarios")){
