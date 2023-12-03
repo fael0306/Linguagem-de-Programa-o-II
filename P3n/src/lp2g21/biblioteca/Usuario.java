@@ -5,54 +5,54 @@ import java.util.GregorianCalendar;
 
 public class Usuario extends Pessoa {
 
-    String endereco;
-    int codigoUsuario;
-    ArrayList<Emprest> Hist;
+  String endereco;
+  int codigoUsuario;
+  ArrayList < Emprest > Hist;
 
-    public Usuario(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura,
-            String endereco, int codigoUsuario) {
-        super(nome, sobreNome, dia, mes, ano, numCPF, peso, altura);
-        this.endereco = endereco;
-        this.codigoUsuario = codigoUsuario;
-    }
-    
-    public void addLivroHist(GregorianCalendar datadelocacao, String codLivro){
-        Emprest emprestimo = new Emprest(datadelocacao,codLivro);
-        Hist.add(emprestimo);
-    }
+  public Usuario(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura,
+    String endereco, int codigoUsuario) {
+    super(nome, sobreNome, dia, mes, ano, numCPF, peso, altura);
+    this.endereco = endereco;
+    this.codigoUsuario = codigoUsuario;
+  }
 
-    public String getEndereco() {
-        return endereco;
-    }
+  public void addLivroHist(GregorianCalendar datadelocacao, String codLivro) {
+    Emprest emprestimo = new Emprest(datadelocacao, codLivro);
+    Hist.add(emprestimo);
+  }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+  public String getEndereco() {
+    return endereco;
+  }
 
-    public int getCodigoUsuario() {
-        return codigoUsuario;
-    }
+  public void setEndereco(String endereco) {
+    this.endereco = endereco;
+  }
 
-    public void setCodigoUsuario(int codigoUsuario) {
-        this.codigoUsuario = codigoUsuario;
-    }
+  public int getCodigoUsuario() {
+    return codigoUsuario;
+  }
 
-    public ArrayList<Emprest> getHist() {
-        return Hist;
-    }
+  public void setCodigoUsuario(int codigoUsuario) {
+    this.codigoUsuario = codigoUsuario;
+  }
 
-    public void setHist(ArrayList<Emprest> hist) {
-        Hist = hist;
-    }
+  public ArrayList < Emprest > getHist() {
+    return Hist;
+  }
 
-    public String toString(){
-        String imp;
+  public void setHist(ArrayList < Emprest > hist) {
+    Hist = hist;
+  }
 
-        imp = super.toString() +
-        "\nEndereço " + getEndereco() + 
-        "\nCódigo do usuário: " + getCodigoUsuario() +
-        "\nHistórico: " + getHist();
+  public String toString() {
+    String imp;
 
-        return imp;
-    }
+    imp = super.toString() +
+      "\nEndereço " + getEndereco() +
+      "\nCódigo do usuário: " + getCodigoUsuario() +
+      "\nHistórico: " + getHist();
+
+    return imp;
+  }
 }

@@ -4,32 +4,32 @@ import java.util.GregorianCalendar;
 
 public class Emprest {
 
-    GregorianCalendar datadeemprestimo;
+  GregorianCalendar datadeemprestimo;
 
-    public GregorianCalendar getDatadeemprestimo() {
-        return datadeemprestimo;
-    }
+  public GregorianCalendar getDatadeemprestimo() {
+    return datadeemprestimo;
+  }
 
-    GregorianCalendar datadevolucao;
+  GregorianCalendar datadevolucao;
 
-    public Emprest(GregorianCalendar datadeemprestimo, String codigoLivro) {
-        this.datadeemprestimo = datadeemprestimo;
-    }
+  public Emprest(GregorianCalendar datadeemprestimo, String codigoLivro) {
+    this.datadeemprestimo = datadeemprestimo;
+  }
 
-     public GregorianCalendar getDatadevolucao() {
-        return datadevolucao;
-    }
+  public GregorianCalendar getDatadevolucao() {
+    return datadevolucao;
+  }
 
-    public void devolverLivro(){
-        this.datadevolucao = new GregorianCalendar();
-    }
-    
-    public String toString(){
-        String imp;
+  public void devolverLivro() {
+    this.datadevolucao = new GregorianCalendar();
+  }
 
-        imp = "Data de empréstimo: " + getDatadeemprestimo() + 
-        "\nData de devolução: " + getDatadevolucao();
+  public String toString() {
+    String imp;
 
-        return imp;
-    }
+    imp = "Data de empréstimo: " + getDatadeemprestimo() +
+      "\nData de devolução: " + getDatadevolucao();
+
+    return imp;
+  }
 }

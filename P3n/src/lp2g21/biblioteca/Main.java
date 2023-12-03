@@ -4,7 +4,7 @@ public class Main {
     
     private static void manutencao(){
             
-        }
+    }
     
     private static void cadastro(){
 
