@@ -1,0 +1,3 @@
+isabella@isabella-HP-ProBook-6360b-XX682AV:~/Área de Trabalho/P3n/src/lp2g21/biblioteca$ export CLASSPATH=/home/isabella/Área\ de\ Trabalho/P3n/src
+isabella@isabella-HP-ProBook-6360b-XX682AV:~/Área de Trabalho/P3n/src/lp2g21/biblioteca$ javac *.java
+isabella@isabella-HP-ProBook-6360b-XX682AV:~/Área de Trabalho/P3n/src/lp2g21/biblioteca$ java Main
