@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 public class Biblioteca {
     Hashtable<Integer, Usuario> usuarios;
@@ -93,6 +94,17 @@ public class Biblioteca {
         GregorianCalendar dataemprestimo = (GregorianCalendar) datadevolucao.clone();
         dataemprestimo.add(GregorianCalendar.DAY_OF_MONTH, -7);
         livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
+        
+        // Buscando empréstimo mais recente referente ao livro no histórico
+        EmprestPara emprestatual = livro.getHist().get(livro.getHist().size()-1);
+        emprestatual.setdataDevol(datadevolucao);
+
+        if(datadevolucao.after(emprestatual.getdataDevol())){
+            long diasdeatraso = (datadevolucao.getTimeInMillis() - dataemprestimo.getTimeInMillis()) / (24 * 60 * 60 * 1000);
+            float multa = diasdeatraso*15; // Multa de R$15 por dia
+            System.out.println("Devolução com atraso de " + diasdeatraso + "dias. Multa de R$" + multa);
+            System.out.println("Por favor, pague a multa na biblioteca."); 
+        }
     }
 
     public String imprimeLivros(){
