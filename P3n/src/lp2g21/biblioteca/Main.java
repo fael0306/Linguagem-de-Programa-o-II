@@ -13,7 +13,7 @@ public class Main {
     System.out.println("\n1 - Iniciar uma Biblioteca do zero\n2 - Carregar os arquivos da biblioteca");
     int escolha = op.nextInt();
 
-    switch (escolha) {
+switch (escolha) {
     case 1:
       Hashtable < Integer, Usuario > usuarios = new Hashtable < > ();
       Hashtable < String, Livro > livros = new Hashtable < > ();
@@ -29,7 +29,6 @@ public class Main {
       System.out.println("\nEscolha uma opção válida.");
       return;
     }
-
   }
 
   private static void cadastro() {
