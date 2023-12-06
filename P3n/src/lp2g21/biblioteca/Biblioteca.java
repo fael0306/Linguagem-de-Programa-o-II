@@ -72,7 +72,7 @@ public class Biblioteca {
     try {
       livro.empresta();
     } catch (CopiaNaoDisponivelEx e) {
-      e.printStackTrace();
+      System.out.println(e.getMessage());
     }
     GregorianCalendar dataemprestimo = (GregorianCalendar) GregorianCalendar.getInstance();
     GregorianCalendar datadevolucao = (GregorianCalendar) dataemprestimo.clone();

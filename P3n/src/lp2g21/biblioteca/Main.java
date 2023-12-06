@@ -28,7 +28,7 @@ switch (escolha) {
       break;
     default:
       System.out.println("\nEscolha uma opção válida.");
-      return;
+      manutencao();
     }
   }
 
@@ -134,20 +134,88 @@ switch (escolha) {
         break;
   
       default:
+        System.out.println("\nVocê digitou errado. Tente novamente.");
+        cadastro();
         break;
     }
   }
 
   private static void emprestimo() {
+    Scanner op3 = new Scanner(System.in);
+    System.out.println("\n1 - Exibir livros\n2 - Realizar empréstimo\n3 - Fazer uma devolução");
+    int escolha = op3.nextInt();
 
+    switch(escolha){
+      case 1:
+        System.out.println(biblioteca.imprimeLivros());
+        break;
+      case 2:
+        Usuario usuario = null;
+        Livro livro = null;
+        Scanner cdlivro = new Scanner(System.in);
+        System.out.println("\nDigite o código do livro: ");
+        String cdlivro1 = cdlivro.nextLine();
+
+        try {
+          livro = biblioteca.getLivro(cdlivro1);
+        } catch (LivroNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+
+        Scanner cdusuario = new Scanner(System.in);
+        System.out.println("\nDigite o código do usuário: ");
+        int cdusuario1 = cdusuario.nextInt();
+
+        try {
+          usuario = biblioteca.getUsuario(cdusuario1);
+        } catch (UsuarioNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+
+        biblioteca.emprestaLivro(usuario, livro);
+        break;
+
+      case 3:
+        Usuario usuario2 = null;
+        Livro livro2 = null;
+        Scanner cdlivro2 = new Scanner(System.in);
+        System.out.println("\nDigite o código do livro: ");
+        String cdlivro3 = cdlivro2.nextLine();
+
+        try {
+          livro2 = biblioteca.getLivro(cdlivro3);
+        } catch (LivroNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+
+        Scanner cdusuario2 = new Scanner(System.in);
+        System.out.println("\nDigite o código do usuário: ");
+        int cdusuario3 = cdusuario2.nextInt();
+
+        try {
+          usuario2 = biblioteca.getUsuario(cdusuario3);
+        } catch (UsuarioNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+
+        biblioteca.devolveLivro(usuario2, livro2);
+        break;
+      
+      default:
+        System.out.println("\nVocê digitou errado. Tente novamente.");
+        emprestimo();
+        break;
+        
+      }
   }
 
   private static void gerarRelatorio() {
-
+      
   }
 
   public static void main(String[] args) {
     manutencao();
     cadastro();
+    emprestimo();
   }
 }
