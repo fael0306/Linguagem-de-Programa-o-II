@@ -236,6 +236,20 @@ switch (escolha) {
         }
         System.out.println(usuario.toString());
         break;
+
+      case 4:
+        Livro livro = null;
+        Scanner cdlivro = new Scanner(System.in);
+        System.out.println("\nDigite o código do livro: ");
+        String cdlivro2 = cdlivro.nextLine();
+
+        try {
+          livro = biblioteca.getLivro(cdlivro2);
+        } catch (LivroNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+        System.out.println(livro.toString());
+        break;
       
       default:
         gerarRelatorio();

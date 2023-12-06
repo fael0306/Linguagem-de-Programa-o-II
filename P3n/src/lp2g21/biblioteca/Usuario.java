@@ -51,7 +51,12 @@ public class Usuario extends Pessoa {
     imp = super.toString() +
       "\nEndereço " + getEndereco() +
       "\nCódigo do usuário: " + getCodigoUsuario() +
-      "\nHistórico: " + getHist();
+      "\nHistórico: ";
+
+    ArrayList<Emprest> historico = getHist();
+    for (Emprest historico1 : historico) {
+       imp = imp + historico1.toString() + "\n";
+    }
 
     return imp;
   }

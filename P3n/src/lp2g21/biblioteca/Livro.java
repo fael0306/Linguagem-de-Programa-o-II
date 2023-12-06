@@ -99,7 +99,12 @@ public class Livro {
       "\nCategoria do livro: " + getCategoria() +
       "\nQuantidade total: " + getQtd() +
       "\nQuantidade emprestado: " + getEmprestados() +
-      "\nHistórico: " + getHist();
+      "\nHistórico: ";
+
+    ArrayList<EmprestPara> historico = getHist();
+    for (EmprestPara historico1 : historico) {
+       imp = imp + historico1.toString() + "\n";
+    }
 
     return imp;
   }

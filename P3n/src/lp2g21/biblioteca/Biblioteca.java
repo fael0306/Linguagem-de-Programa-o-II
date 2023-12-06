@@ -110,7 +110,7 @@ public class Biblioteca {
       listadelivros.sort(Comparator.comparing(Livro::getTituloLivro));
 
       for (Livro livro: listadelivros) {
-        strresultado = strresultado + livro.toString() + "\n";
+        strresultado = strresultado + livro.getTituloLivro() + "\n";
       }
     } else {
       strresultado = "Nenhum livro encontrado.";
@@ -125,7 +125,7 @@ public class Biblioteca {
       listadeusuarios.sort(Comparator.comparing(Usuario::getNome));
 
       for (Usuario usuario: listadeusuarios) {
-        strresultado = strresultado + usuario.toString() + "\n";
+        strresultado = strresultado + usuario.getNome() + "\n";
       }
     } else {
       strresultado = "Nenhum usuário encontrado.";
