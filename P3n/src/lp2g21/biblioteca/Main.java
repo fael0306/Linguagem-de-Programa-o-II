@@ -210,12 +210,43 @@ switch (escolha) {
   }
 
   private static void gerarRelatorio() {
+    Scanner op4 = new Scanner(System.in);
+    System.out.println("\n1 - Listar acervo de livros\n2 - Listar usuários\n3 - Detalhar usuário específico\n4 - Detalhar livro específico");
+    int escolha = op4.nextInt();
+
+    switch (escolha) {
+      case 1:
+        biblioteca.imprimeLivros();
+        break;
       
+      case 2:
+        biblioteca.imprimeUsuarios();
+        break;
+      
+      case 3:
+        Usuario usuario = null;
+        Scanner cdusuario = new Scanner(System.in);
+        System.out.println("\nDigite o código do usuário: ");
+        int cdusuario2 = cdusuario.nextInt();
+
+        try {
+          usuario = biblioteca.getUsuario(cdusuario2);
+        } catch (UsuarioNaoCadastradoEx e) {
+          System.out.println(e.getMessage());
+        }
+        System.out.println(usuario.toString());
+        break;
+      
+      default:
+        gerarRelatorio();
+        break;
+    }
   }
 
   public static void main(String[] args) {
     manutencao();
     cadastro();
     emprestimo();
+    gerarRelatorio();
   }
 }

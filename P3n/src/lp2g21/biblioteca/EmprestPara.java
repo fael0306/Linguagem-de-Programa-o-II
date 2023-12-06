@@ -1,5 +1,6 @@
 package lp2g21.biblioteca;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class EmprestPara {
@@ -48,9 +49,21 @@ public class EmprestPara {
   public String toString() {
     String imp;
 
-    imp = "Data de empréstimo: " + getDataemprestimo() +
-      "\nData de devolução: " + getDatadevolucao() +
-      "\nCódigo do usuário: " + getCodigoUsuario();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+    if (datadevolucao != null) {
+      // Livro já foi devolvido
+      imp = "Data de empréstimo: " + dateFormat.format(dataemprestimo.getTime()) +
+             "\nData de devolução programada: " + dateFormat.format(dataDevol.getTime())  +
+             "\nData de devolução: " + dateFormat.format(datadevolucao.getTime()) +
+             "\nCódigo do usuário: " + codigoUsuario;
+  } else {
+      // Livro está pendente
+      imp = "Data de empréstimo: " + dateFormat.format(dataemprestimo.getTime()) +
+             "\nData de devolução programada: " + (dataDevol != null ? dateFormat.format(dataDevol.getTime()) : "Pendente") +
+             "\nData de devolução: Pendente" +
+             "\nCódigo do usuário: " + codigoUsuario;
+  }
 
     return imp;
   }

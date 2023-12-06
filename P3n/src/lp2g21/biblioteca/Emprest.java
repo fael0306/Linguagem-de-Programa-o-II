@@ -1,5 +1,6 @@
 package lp2g21.biblioteca;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Emprest {
@@ -27,8 +28,10 @@ public class Emprest {
   public String toString() {
     String imp;
 
-    imp = "Data de empréstimo: " + getDatadeemprestimo() +
-      "\nData de devolução: " + getDatadevolucao();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+    imp = "Data de empréstimo: " + (datadeemprestimo != null ? dateFormat.format(datadeemprestimo.getTime()) : "Pendente") +
+              "\nData de devolução: " + (datadevolucao != null ? dateFormat.format(datadevolucao.getTime()) : "Pendente");
 
     return imp;
   }
