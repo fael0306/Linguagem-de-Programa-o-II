@@ -1,9 +1,10 @@
 package lp2g21.biblioteca;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class Usuario extends Pessoa {
+public class Usuario extends Pessoa implements Serializable {
 
   String endereco;
   int codigoUsuario;

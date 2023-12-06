@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Main {
 
   static Biblioteca biblioteca;
+  static Hashtable < Integer, Usuario > usuarios = new Hashtable < > ();
+  static Hashtable < String, Livro > livros = new Hashtable < > ();
 
   private static void manutencao() {
 
@@ -16,8 +18,6 @@ public class Main {
     
 switch (escolha) {
     case 1:
-      Hashtable < Integer, Usuario > usuarios = new Hashtable < > ();
-      Hashtable < String, Livro > livros = new Hashtable < > ();
       biblioteca = new Biblioteca(usuarios, livros);
       biblioteca.salvaArquivo(usuarios, "usuarios");
       biblioteca.salvaArquivo(livros, "livros");
@@ -113,8 +113,6 @@ switch (escolha) {
         break;
 
       case 3:
-        Hashtable<Integer, Usuario> usuarios = new Hashtable<>();
-        Hashtable<String, Livro> livros = new Hashtable<>();
         Scanner op3 = new Scanner(System.in);
     
         System.out.println("\n1 - Salvar usuários\n2 - Salvar livros");
@@ -127,9 +125,9 @@ switch (escolha) {
         }
        
         if (escolha2 == 1) {
-            biblioteca.salvaArquivo(usuarios, "usuarios");
+            biblioteca.salvaArquivo(biblioteca.usuarios, "usuarios");
         } else if (escolha2 == 2) {
-            biblioteca.salvaArquivo(livros, "livros");
+            biblioteca.salvaArquivo(biblioteca.livros, "livros");
         }
         break;
   
@@ -142,7 +140,7 @@ switch (escolha) {
 
   private static void emprestimo() {
     Scanner op3 = new Scanner(System.in);
-    System.out.println("\n1 - Exibir livros\n2 - Realizar empréstimo\n3 - Fazer uma devolução");
+    System.out.println("\n1 - Exibir livros\n2 - Realizar empréstimo\n3 - Fazer uma devolução\n4 - Voltar ao Menu Principal");
     int escolha = op3.nextInt();
 
     switch(escolha){
@@ -205,6 +203,10 @@ switch (escolha) {
         biblioteca.devolveLivro(usuario2, livro2);
         break;
       
+      case 4:
+        main(null);
+        break;
+      
       default:
         System.out.println("\nVocê digitou errado. Tente novamente.");
         emprestimo();
@@ -215,16 +217,18 @@ switch (escolha) {
 
   private static void gerarRelatorio() {
     Scanner op4 = new Scanner(System.in);
-    System.out.println("\n1 - Listar acervo de livros\n2 - Listar usuários\n3 - Detalhar usuário específico\n4 - Detalhar livro específico");
+    System.out.println("\n1 - Listar acervo de livros\n2 - Listar usuários\n3 - Detalhar usuário específico\n4 - Detalhar livro específico\n5 - Voltar ao Menu Principal");
     int escolha = op4.nextInt();
 
     switch (escolha) {
       case 1:
-        biblioteca.imprimeLivros();
+        System.out.println(biblioteca.imprimeLivros());
+        gerarRelatorio();
         break;
       
       case 2:
-        biblioteca.imprimeUsuarios();
+        System.out.println(biblioteca.imprimeUsuarios());
+        gerarRelatorio();
         break;
       
       case 3:
@@ -257,6 +261,10 @@ switch (escolha) {
         System.out.println(livro.toString());
         break;
       
+      case 5:
+        main(null);
+        break;
+
       default:
         System.out.println("\nVocê digitou errado. Tente novamente.");
         gerarRelatorio();
@@ -265,9 +273,42 @@ switch (escolha) {
   }
 
   public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    // Executa a manutenção inicial da biblioteca
     manutencao();
-    cadastro();
-    emprestimo();
-    gerarRelatorio();
-  }
+
+    // Menu principal
+    int opcao;
+    do {
+        System.out.println("\nMenu Principal:");
+        System.out.println("1 - Cadastro");
+        System.out.println("2 - Empréstimo");
+        System.out.println("3 - Gerar Relatório");
+        System.out.println("0 - Sair");
+        System.out.print("Escolha uma opção: ");
+        
+        opcao = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha após o número
+
+        switch (opcao) {
+            case 1:
+                cadastro();
+                break;
+            case 2:
+                emprestimo();
+                break;
+            case 3:
+                gerarRelatorio();
+                break;
+            case 0:
+                System.out.println("Saindo do programa. Até mais!");
+                break;
+            default:
+                System.out.println("Opção inválida. Tente novamente.");
+        }
+    } while (opcao != 0);
+    
+    scanner.close();
+}
 }
