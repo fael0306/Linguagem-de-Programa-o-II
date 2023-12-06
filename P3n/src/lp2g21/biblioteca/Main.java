@@ -27,7 +27,7 @@ switch (escolha) {
       biblioteca = new Biblioteca("usuarios", "livros");
       break;
     default:
-      System.out.println("\nEscolha uma opção válida.");
+      System.out.println("\nVocê digitou errado. Tente novamente.");
       manutencao();
     }
   }
@@ -160,6 +160,7 @@ switch (escolha) {
           livro = biblioteca.getLivro(cdlivro1);
         } catch (LivroNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          emprestimo();
         }
 
         Scanner cdusuario = new Scanner(System.in);
@@ -170,6 +171,7 @@ switch (escolha) {
           usuario = biblioteca.getUsuario(cdusuario1);
         } catch (UsuarioNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          emprestimo();
         }
 
         biblioteca.emprestaLivro(usuario, livro);
@@ -186,6 +188,7 @@ switch (escolha) {
           livro2 = biblioteca.getLivro(cdlivro3);
         } catch (LivroNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          emprestimo();
         }
 
         Scanner cdusuario2 = new Scanner(System.in);
@@ -196,6 +199,7 @@ switch (escolha) {
           usuario2 = biblioteca.getUsuario(cdusuario3);
         } catch (UsuarioNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          emprestimo();
         }
 
         biblioteca.devolveLivro(usuario2, livro2);
@@ -233,6 +237,7 @@ switch (escolha) {
           usuario = biblioteca.getUsuario(cdusuario2);
         } catch (UsuarioNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          gerarRelatorio();
         }
         System.out.println(usuario.toString());
         break;
@@ -247,11 +252,13 @@ switch (escolha) {
           livro = biblioteca.getLivro(cdlivro2);
         } catch (LivroNaoCadastradoEx e) {
           System.out.println(e.getMessage());
+          gerarRelatorio();
         }
         System.out.println(livro.toString());
         break;
       
       default:
+        System.out.println("\nVocê digitou errado. Tente novamente.");
         gerarRelatorio();
         break;
     }
