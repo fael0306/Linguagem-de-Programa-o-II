@@ -80,9 +80,11 @@ switch (escolha) {
         Scanner codigo1 = new Scanner(System.in);
         System.out.println("\nDigite o código do usuário: ");
         int codigoUsuario = codigo1.nextInt();
+
+        ArrayList <Emprest> hist = new ArrayList<Emprest>();
       
         Usuario usuario = new Usuario(nome, sobreNome, dia, mes, ano, numCPF, peso, altura,
-        endereco, codigoUsuario);
+        endereco, codigoUsuario, hist);
         
         biblioteca.cadastroUsuario(usuario);
         break;
@@ -107,9 +109,9 @@ switch (escolha) {
         // Cópias emprestadas inicializa com 0
         // Array de histórico inicializa zerado também
 
-        ArrayList <EmprestPara> hist = new ArrayList<EmprestPara>();
+        ArrayList <EmprestPara> hist2 = new ArrayList<EmprestPara>();
         
-        Livro livro = new Livro(codigoLivro,tituloLivro,categoria,qtd,0,hist);
+        Livro livro = new Livro(codigoLivro,tituloLivro,categoria,qtd,0,hist2);
         biblioteca.cadastraLivro(livro);
         break;
 

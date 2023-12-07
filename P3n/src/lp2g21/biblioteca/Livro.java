@@ -100,12 +100,7 @@ public class Livro implements Serializable {
       "\nCategoria do livro: " + getCategoria() +
       "\nQuantidade total: " + getQtd() +
       "\nQuantidade emprestado: " + getEmprestados() +
-      "\nHistórico: ";
-
-    ArrayList<EmprestPara> historico = getHist();
-    for (EmprestPara historico1 : historico) {
-       imp = imp + historico1.toString() + "\n";
-    }
+      "\nHistórico: " + getHist();
 
     return imp;
   }

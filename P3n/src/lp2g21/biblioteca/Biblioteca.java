@@ -79,6 +79,7 @@ public class Biblioteca implements Serializable {
     GregorianCalendar datadevolucao = (GregorianCalendar) dataemprestimo.clone();
     datadevolucao.add(GregorianCalendar.DAY_OF_MONTH, 7);
     livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
+    usuario.addLivroHist(dataemprestimo, livro.getCodigoLivro());
   }
 
   public void devolveLivro(Usuario usuario, Livro livro) {

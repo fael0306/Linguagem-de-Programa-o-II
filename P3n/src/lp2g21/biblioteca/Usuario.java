@@ -7,21 +7,21 @@ public class Usuario extends Pessoa {
 
   String endereco;
   int codigoUsuario;
-  ArrayList < Emprest > Hist;
+  ArrayList < Emprest > hist;
 
   public Usuario() {}
 
   public Usuario(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura,
-    String endereco, int codigoUsuario) {
+    String endereco, int codigoUsuario, ArrayList < Emprest > hist) {
     super(nome, sobreNome, dia, mes, ano, numCPF, peso, altura);
     this.endereco = endereco;
     this.codigoUsuario = codigoUsuario;
-    this.Hist = new ArrayList<>();
+    this.hist = hist;
   }
 
   public void addLivroHist(GregorianCalendar datadelocacao, String codLivro) {
     Emprest emprestimo = new Emprest(datadelocacao, codLivro);
-    Hist.add(emprestimo);
+    hist.add(emprestimo);
   }
 
   public String getEndereco() {
@@ -41,11 +41,11 @@ public class Usuario extends Pessoa {
   }
 
   public ArrayList < Emprest > getHist() {
-    return Hist;
+    return hist;
   }
 
   public void setHist(ArrayList < Emprest > hist) {
-    Hist = hist;
+    this.hist = hist;
   }
 
   public String toString() {
@@ -54,12 +54,7 @@ public class Usuario extends Pessoa {
     imp = super.toString() +
       "\nEndereço: " + getEndereco() +
       "\nCódigo do usuário: " + getCodigoUsuario() +
-      "\nHistórico: ";
-
-    ArrayList<Emprest> historico = getHist();
-    for (Emprest historico1 : historico) {
-       imp = imp + historico1.toString() + "\n";
-    }
+      "\nHistórico: " + getHist();
 
     return imp;
   }

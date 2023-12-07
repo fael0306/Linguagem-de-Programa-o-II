@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 public class Emprest implements Serializable {
 
   GregorianCalendar datadeemprestimo;
+  String codigolivro;
 
   public GregorianCalendar getDatadeemprestimo() {
     return datadeemprestimo;
@@ -16,6 +17,7 @@ public class Emprest implements Serializable {
 
   public Emprest(GregorianCalendar datadeemprestimo, String codigoLivro) {
     this.datadeemprestimo = datadeemprestimo;
+    this.codigolivro = codigoLivro;
   }
 
   public GregorianCalendar getDatadevolucao() {
@@ -32,7 +34,8 @@ public class Emprest implements Serializable {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     imp = "Data de empréstimo: " + (datadeemprestimo != null ? dateFormat.format(datadeemprestimo.getTime()) : "Pendente") +
-              "\nData de devolução: " + (datadevolucao != null ? dateFormat.format(datadevolucao.getTime()) : "Pendente");
+              "\nData de devolução: " + (datadevolucao != null ? dateFormat.format(datadevolucao.getTime()) : "Pendente") +
+          "\nCódigo do livro: " + codigolivro;
 
     return imp;
   }

@@ -55,14 +55,12 @@ public class EmprestPara implements Serializable {
     if (dataDevol != null) {
       // Livro já foi devolvido
       imp = "Data de empréstimo: " + dateFormat.format(dataemprestimo.getTime()) +
-             "\nData de devolução programada: " + dateFormat.format(dataDevol.getTime())  +
              "\nData de devolução: " + dateFormat.format(datadevolucao.getTime()) +
              "\nCódigo do usuário: " + codigoUsuario;
   } else {
       // Livro está pendente
       imp = "Data de empréstimo: " + dateFormat.format(dataemprestimo.getTime()) +
              "\nData de devolução programada: " + (dataDevol != null ? dateFormat.format(dataDevol.getTime()) : "Pendente") +
-             "\nData de devolução: Pendente" +
              "\nCódigo do usuário: " + codigoUsuario;
   }
 
