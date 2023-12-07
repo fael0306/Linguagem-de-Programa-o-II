@@ -10,7 +10,7 @@ public class Livro implements Serializable {
   String tituloLivro;
   String categoria;
   int qtd;
-  int emprestados;
+  int emprestados=0;
   ArrayList < EmprestPara > hist;
 
   public String getCodigoLivro() {

@@ -91,13 +91,13 @@ public class Biblioteca implements Serializable {
     GregorianCalendar datadevolucao = (GregorianCalendar) GregorianCalendar.getInstance();
     GregorianCalendar dataemprestimo = (GregorianCalendar) datadevolucao.clone();
     dataemprestimo.add(GregorianCalendar.DAY_OF_MONTH, -7);
-    livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
+    
 
     // Buscando empréstimo mais recente referente ao livro no histórico
     EmprestPara emprestatual = livro.getHist().get(livro.getHist().size() - 1);
     emprestatual.setdataDevol(datadevolucao);
-
-    if (datadevolucao.after(emprestatual.getdataDevol())) {
+    livro.addUsuarioHist(dataemprestimo, emprestatual.getdataDevol(), usuario.getCodigoUsuario());
+    if (datadevolucao.compareTo(emprestatual.getdataDevol())>0) {
       long diasdeatraso = (datadevolucao.getTimeInMillis() - dataemprestimo.getTimeInMillis()) / (24 * 60 * 60 * 1000);
       float multa = diasdeatraso * 15; // Multa de R$15 por dia
       System.out.println("Devolução com atraso de " + diasdeatraso + "dias. Multa de R$" + multa);
