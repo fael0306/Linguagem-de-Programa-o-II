@@ -64,7 +64,7 @@ public class Biblioteca {
         System.out.println("Nome do arquivo inexistente.");
       }
     } catch (ClassNotFoundException | IOException e) {
-      e.printStackTrace();
+      System.out.println(e.toString());
     }
   }
 

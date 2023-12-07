@@ -1,9 +1,10 @@
 package lp2g21.biblioteca;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-public class EmprestPara {
+public class EmprestPara implements Serializable {
 
   GregorianCalendar dataemprestimo, datadevolucao, dataDevol;
   int codigoUsuario;

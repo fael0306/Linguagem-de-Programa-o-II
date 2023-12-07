@@ -14,6 +14,8 @@ public class Pessoa {
   int idade;
   static int cont = 0;
 
+  public Pessoa(){}
+
   public static int numPessoas() {
     return cont;
   }
