@@ -1,10 +1,11 @@
 package lp2g21.biblioteca;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Serializable {
 
   static Biblioteca biblioteca;
   static Hashtable < Integer, Usuario > usuarios = new Hashtable < > ();

@@ -1,8 +1,9 @@
 package lp2g21.biblioteca;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Pessoa {
+public class Pessoa implements Serializable {
   String nome;
   String sobreNome;
   int dia;

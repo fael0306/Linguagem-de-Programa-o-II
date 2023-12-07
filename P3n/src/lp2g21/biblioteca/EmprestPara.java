@@ -52,7 +52,7 @@ public class EmprestPara implements Serializable {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    if (datadevolucao != null) {
+    if (dataDevol != null) {
       // Livro já foi devolvido
       imp = "Data de empréstimo: " + dateFormat.format(dataemprestimo.getTime()) +
              "\nData de devolução programada: " + dateFormat.format(dataDevol.getTime())  +

@@ -5,12 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
 
-public class Biblioteca {
+public class Biblioteca implements Serializable {
   Hashtable < Integer, Usuario > usuarios;
   Hashtable < String, Livro > livros;
 
