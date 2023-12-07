@@ -227,8 +227,9 @@ public class Main implements Serializable {
 
   private static void gerarRelatorio() {
     Scanner op4 = new Scanner(System.in);
+
     System.out.println("\n1 - Listar acervo de livros\n2 - Listar usuários\n3 - Detalhar usuário específico\n4 - Detalhar livro específico\n5 - Voltar ao Menu Principal");
-    int escolha = op4.nextInt();
+    int escolha;
 
     try {
       escolha = op4.nextInt();
