@@ -39,6 +39,12 @@ public class Emprest implements Serializable {
   }
 
   public String toString() {
-   return "";
+    String imp;
+
+    imp = "Data de empréstimo: " + getDatadeemprestimo() +
+      "\nTítulo de devolução: " + getDatadevolucao() +
+      "\nCódigo do livro: " + getCodigolivro();
+
+    return imp;
   }
 }
