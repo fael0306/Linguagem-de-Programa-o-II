@@ -1,6 +1,7 @@
 package lp2g21.biblioteca;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class EmprestPara implements Serializable {
@@ -39,6 +40,14 @@ public class EmprestPara implements Serializable {
   }
 
   public String toString() {
-    return "";
+    String imp;
+
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+    imp = "Data de empréstimo: " + formato.format(getDataemprestimo().getTime()) +
+      "\nData de devolução: " + formato.format(getDatadevolucao().getTime()) +
+      "\nCódigo do usuário: " + getCodigoUsuario();
+
+    return imp;
   }
 }
