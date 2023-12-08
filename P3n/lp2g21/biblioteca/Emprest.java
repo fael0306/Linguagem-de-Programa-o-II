@@ -1,13 +1,20 @@
 package lp2g21.biblioteca;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Emprest implements Serializable {
 
-  GregorianCalendar datadeemprestimo;
+  GregorianCalendar datadeemprestimo, dataDevol;
   String codigolivro;
+
+  public GregorianCalendar getDataDevol() {
+    return dataDevol;
+  }
+
+  public void setDataDevol(GregorianCalendar dataDevol) {
+    this.dataDevol = dataDevol;
+  }
 
   public GregorianCalendar getDatadeemprestimo() {
     return datadeemprestimo;
@@ -29,14 +36,6 @@ public class Emprest implements Serializable {
   }
 
   public String toString() {
-    String imp;
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-    imp = "Data de empréstimo: " + (datadeemprestimo != null ? dateFormat.format(datadeemprestimo.getTime()) : "Pendente") +
-              "\nData de devolução: " + (datadevolucao != null ? dateFormat.format(datadevolucao.getTime()) : "Pendente") +
-          "\nCódigo do livro: " + codigolivro;
-
-    return imp;
+   return "";
   }
 }

@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
@@ -75,11 +76,12 @@ public class Biblioteca implements Serializable {
     } catch (CopiaNaoDisponivelEx e) {
       System.out.println(e.getMessage());
     }
-    GregorianCalendar dataemprestimo = (GregorianCalendar) GregorianCalendar.getInstance();
-    GregorianCalendar datadevolucao = (GregorianCalendar) dataemprestimo.clone();
-    datadevolucao.add(GregorianCalendar.DAY_OF_MONTH, 7);
-    livro.addUsuarioHist(dataemprestimo, datadevolucao, usuario.getCodigoUsuario());
-    usuario.addLivroHist(dataemprestimo, livro.getCodigoLivro());
+    GregorianCalendar datadelocacao = new GregorianCalendar();
+    GregorianCalendar datadevolucaoprog = new GregorianCalendar();
+    datadevolucaoprog.set(datadelocacao.get(Calendar.YEAR), datadelocacao.get(Calendar.MONTH), datadelocacao.get(Calendar.DAY_OF_MONTH) + 7);
+
+    livro.addUsuarioHist(datadelocacao, datadevolucaoprog, usuario.getCodigoUsuario());
+    usuario.addLivroHist(datadelocacao, livro.getCodigoLivro());
   }
 
   public void devolveLivro(Usuario usuario, Livro livro) {
@@ -88,21 +90,12 @@ public class Biblioteca implements Serializable {
     } catch (NenhumaCopiaEmprestadaEx e) {
       System.out.println(e.getMessage());
     }
-    GregorianCalendar datadevolucao = (GregorianCalendar) GregorianCalendar.getInstance();
-    GregorianCalendar dataemprestimo = (GregorianCalendar) datadevolucao.clone();
-    dataemprestimo.add(GregorianCalendar.DAY_OF_MONTH, -7);
-    
+    GregorianCalendar datadelocacao = new GregorianCalendar();
+    GregorianCalendar datadevolucao = new GregorianCalendar();
+    datadelocacao.set(datadevolucao.get(Calendar.YEAR),datadelocacao.get(Calendar.MONTH),datadelocacao.get(Calendar.DAY_OF_MONTH) - 7);
 
-    // Buscando empréstimo mais recente referente ao livro no histórico
-    EmprestPara emprestatual = livro.getHist().get(livro.getHist().size() - 1);
-    emprestatual.setdataDevol(datadevolucao);
-    livro.addUsuarioHist(dataemprestimo, emprestatual.getdataDevol(), usuario.getCodigoUsuario());
-    if (datadevolucao.compareTo(emprestatual.getdataDevol())>0) {
-      long diasdeatraso = (datadevolucao.getTimeInMillis() - dataemprestimo.getTimeInMillis()) / (24 * 60 * 60 * 1000);
-      float multa = diasdeatraso * 15; // Multa de R$15 por dia
-      System.out.println("Devolução com atraso de " + diasdeatraso + "dias. Multa de R$" + multa);
-      System.out.println("Por favor, pague a multa na biblioteca.");
-    }
+    livro.addUsuarioHist(datadelocacao, datadevolucao, usuario.getCodigoUsuario());
+    usuario.addLivroHist(datadelocacao, livro.getCodigoLivro());
   }
 
   public String imprimeLivros() {
