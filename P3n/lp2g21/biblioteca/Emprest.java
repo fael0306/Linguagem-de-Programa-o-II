@@ -5,22 +5,8 @@ import java.util.GregorianCalendar;
 
 public class Emprest implements Serializable {
 
-  GregorianCalendar datadeemprestimo, dataDevol;
+  GregorianCalendar datadeemprestimo, datadevolucao;
   String codigolivro;
-
-  public GregorianCalendar getDataDevol() {
-    return dataDevol;
-  }
-
-  public void setDataDevol(GregorianCalendar dataDevol) {
-    this.dataDevol = dataDevol;
-  }
-
-  public GregorianCalendar getDatadeemprestimo() {
-    return datadeemprestimo;
-  }
-
-  GregorianCalendar datadevolucao;
 
   public Emprest(GregorianCalendar datadeemprestimo, String codigoLivro) {
     this.datadeemprestimo = datadeemprestimo;
@@ -29,6 +15,10 @@ public class Emprest implements Serializable {
 
   public GregorianCalendar getDatadevolucao() {
     return datadevolucao;
+  }
+
+   public GregorianCalendar getDatadeemprestimo() {
+    return datadeemprestimo;
   }
 
   public void devolverLivro() {
