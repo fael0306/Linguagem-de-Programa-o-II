@@ -81,7 +81,7 @@ public class Biblioteca implements Serializable {
     datadevolucaoprog.set(datadelocacao.get(Calendar.YEAR), datadelocacao.get(Calendar.MONTH), datadelocacao.get(Calendar.DAY_OF_MONTH) + 7);
 
     livro.addUsuarioHist(datadelocacao, datadevolucaoprog, usuario.getCodigoUsuario());
-    usuario.addLivroHist(datadelocacao, livro.getCodigoLivro());
+    usuario.addLivroHist(datadelocacao, datadevolucaoprog, livro.getCodigoLivro());
   }
 
   public void devolveLivro(Usuario usuario, Livro livro) {
@@ -92,10 +92,10 @@ public class Biblioteca implements Serializable {
     }
     GregorianCalendar datadelocacao = new GregorianCalendar();
     GregorianCalendar datadevolucao = new GregorianCalendar();
-    datadelocacao.set(datadevolucao.get(Calendar.YEAR),datadelocacao.get(Calendar.MONTH),datadelocacao.get(Calendar.DAY_OF_MONTH) - 7);
+    datadelocacao.set(datadevolucao.get(Calendar.YEAR),datadevolucao.get(Calendar.MONTH),datadevolucao.get(Calendar.DAY_OF_MONTH) - 7);
 
     livro.addUsuarioHist(datadelocacao, datadevolucao, usuario.getCodigoUsuario());
-    usuario.addLivroHist(datadelocacao, livro.getCodigoLivro());
+    usuario.addLivroHist(datadelocacao, datadevolucao, livro.getCodigoLivro());
   }
 
   public String imprimeLivros() {

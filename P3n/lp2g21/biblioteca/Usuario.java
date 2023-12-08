@@ -19,8 +19,8 @@ public class Usuario extends Pessoa {
     this.hist = hist;
   }
 
-  public void addLivroHist(GregorianCalendar datadelocacao, String codLivro) {
-    Emprest emprestimo = new Emprest(datadelocacao, codLivro);
+  public void addLivroHist(GregorianCalendar datadelocacao, GregorianCalendar datadevolucao, String codLivro) {
+    Emprest emprestimo = new Emprest(datadelocacao,datadevolucao,codLivro);
     hist.add(emprestimo);
   }
 
