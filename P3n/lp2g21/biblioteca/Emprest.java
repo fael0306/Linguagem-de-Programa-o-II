@@ -45,7 +45,7 @@ public class Emprest implements Serializable {
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
     imp = "Data de empréstimo: " + formato.format(getDatadeemprestimo().getTime()) +
-      "\nTítulo de devolução: " + formato.format(getDatadevolucao().getTime()) +
+      "\nData de devolução: " + formato.format(getDatadevolucao().getTime()) +
       "\nCódigo do livro: " + getCodigolivro();
 
     return imp;
